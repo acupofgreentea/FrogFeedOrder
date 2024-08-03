@@ -1,0 +1,499 @@
+fileFormatVersion: 2
+guid: efc0dca3292e6f64aa69bb543b46400f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrogMaterial
+    second: {fileID: 2100000, guid: 4fa4281dc23602b4792539a3664735e1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Frog(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig.003
+      parentName: Frog(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Spine3
+      parentName: Rig.003
+      position: {x: -0.00000081095783, y: -0.00055949297, z: 0.0018031821}
+      rotation: {x: -0.47469634, y: -0.5405647, z: 0.42194748, w: 0.5517369}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: Spine3.001
+      parentName: Spine3
+      position: {x: 6.8848746e-11, y: 0.00079792447, z: -2.0372681e-12}
+      rotation: {x: -0.00022719706, y: -0.0004875212, z: 0.08753225, w: 0.9961616}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Spine3.002
+      parentName: Spine3.001
+      position: {x: -1.2532837e-10, y: 0.00070554524, z: 4.9476512e-12}
+      rotation: {x: 0.011146222, y: -0.0000004928079, z: -0.43832263, w: 0.8987486}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Spine3.008
+      parentName: Spine3.002
+      position: {x: 2.1059349e-11, y: 0.0009242996, z: 3.055902e-12}
+      rotation: {x: -0.013314908, y: 0.0000005509654, z: 0.5236039, w: 0.8518578}
+      scale: {x: 1.0000001, y: 0.9999998, z: 0.9999997}
+    - name: Spine3.008_end
+      parentName: Spine3.008
+      position: {x: 1.7239926e-10, y: 0.0011195139, z: -4.3655745e-13}
+      rotation: {x: 0.000000008321946, y: 0.000000009080395, z: -0.0000004320819, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.008_end_end
+      parentName: Spine3.008_end
+      position: {x: -0, y: 0.001119514, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.003
+      parentName: Spine3.001
+      position: {x: -1.2532837e-10, y: 0.00070554524, z: 4.9476512e-12}
+      rotation: {x: -0.11809573, y: 0.98258173, z: 0.0004516159, w: 0.14347953}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: Spine3.009
+      parentName: Spine3.003
+      position: {x: -0.0000000010757912, y: 0.0007669487, z: 2.6921042e-11}
+      rotation: {x: 0.013164721, y: -0.0000001907629, z: -0.5176796, w: 0.8554733}
+      scale: {x: 0.99999976, y: 1, z: 0.9999999}
+    - name: Spine3.009_end
+      parentName: Spine3.009
+      position: {x: 2.1732375e-11, y: 0.00096120726, z: 1.6007107e-12}
+      rotation: {x: 0.0000000010632251, y: -2.9103825e-10, z: -0.0000000146757735, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Spine3.009_end_end
+      parentName: Spine3.009_end
+      position: {x: -0, y: 0.0009612075, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.004
+      parentName: Spine3.001
+      position: {x: -1.2532837e-10, y: 0.00070554524, z: 4.9476512e-12}
+      rotation: {x: -0.009812011, y: -0.000000066796126, z: 0.3858467, w: 0.92251074}
+      scale: {x: 0.38184652, y: 0.38184646, z: 0.38184655}
+    - name: Spine3.005
+      parentName: Spine3.004
+      position: {x: -3.8344296e-11, y: 0.001224498, z: 3.4924596e-12}
+      rotation: {x: 0.0134317605, y: -0.00000016065934, z: -0.52819455, w: 0.8490172}
+      scale: {x: 0.99999976, y: 0.99999964, z: 0.9999999}
+    - name: Spine3.006
+      parentName: Spine3.005
+      position: {x: 1.8162609e-10, y: 0.0008064909, z: -8.731149e-12}
+      rotation: {x: 0.010129375, y: 0.00000016481282, z: -0.39833012, w: 0.91718626}
+      scale: {x: 0.99999994, y: 0.99999976, z: 1}
+    - name: Spine3.040
+      parentName: Spine3.006
+      position: {x: -2.6559063e-10, y: 0.0009770006, z: -1.7462298e-12}
+      rotation: {x: 0.0110743735, y: 0.00000026993635, z: -0.435485, w: 0.9001279}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999976}
+    - name: Spine3.007
+      parentName: Spine3.040
+      position: {x: -0.00000000663651, y: 0.0007896245, z: 8.731149e-12}
+      rotation: {x: 0.011147703, y: -0.0000001632152, z: -0.43836486, w: 0.89872795}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: Spine3.041
+      parentName: Spine3.007
+      position: {x: -1.1898009e-10, y: 0.0009968249, z: -2.0954757e-11}
+      rotation: {x: 0.009795108, y: -0.00000011740927, z: -0.38518238, w: 0.9227885}
+      scale: {x: 0.99999976, y: 0.99999994, z: 0.99999964}
+    - name: Spine3.041_end
+      parentName: Spine3.041
+      position: {x: -8.074494e-11, y: 0.00110043, z: -1.4551915e-11}
+      rotation: {x: 0.000000002873538, y: 0.0000000023574103, z: -0.00000012683844, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Spine3.041_end_end
+      parentName: Spine3.041_end
+      position: {x: -0, y: 0.0011004311, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.010
+      parentName: Rig.003
+      position: {x: -0.00000081095874, y: -0.00055949297, z: 0.0018031829}
+      rotation: {x: 0.000000107696856, y: 0.53546715, z: 0.84455603, w: 0.000000109771364}
+      scale: {x: 1, y: 1, z: 1.0000148}
+    - name: Spine3.011
+      parentName: Spine3.010
+      position: {x: -6.066258e-14, y: 0.0011563625, z: -1.1531859e-13}
+      rotation: {x: -0.18774296, y: 0.00000014831103, z: 3.830152e-13, w: 0.9822182}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Spine3.011_end
+      parentName: Spine3.011
+      position: {x: -1.5506707e-13, y: 0.0015935807, z: -1.4885247e-10}
+      rotation: {x: 0.00000013411044, y: 1.9291235e-12, z: 1.7763568e-14, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Spine3.011_end_end
+      parentName: Spine3.011_end
+      position: {x: -0, y: 0.001593583, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.019
+      parentName: Spine3.010
+      position: {x: -6.066258e-14, y: 0.0011563625, z: -1.1531859e-13}
+      rotation: {x: 0.006380141, y: -0.017861634, z: -0.009251215, w: 0.9997773}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: Spine3.020
+      parentName: Spine3.019
+      position: {x: -1.094304e-10, y: 0.0018653088, z: -1.4901161e-10}
+      rotation: {x: 0.18424118, y: -0.029684024, z: -0.4015083, w: 0.8966411}
+      scale: {x: 0.9999998, y: 0.9999999, z: 1}
+    - name: Spine3.021
+      parentName: Spine3.020
+      position: {x: -1.3038516e-10, y: 0.0017597042, z: 1.862645e-10}
+      rotation: {x: -0.63614434, y: -0.048705388, z: 0.13795343, w: 0.7575731}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: Spine3.022
+      parentName: Spine3.021
+      position: {x: 8.381903e-11, y: 0.0014280863, z: -3.6437994e-10}
+      rotation: {x: 0.37499508, y: 0.076454856, z: -0.6261356, w: 0.6793288}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Spine3.023
+      parentName: Spine3.022
+      position: {x: -0.0000000011920929, y: 0.0005187071, z: 2.6077032e-10}
+      rotation: {x: -0.26788348, y: -0.036941513, z: -0.049625423, w: 0.96146303}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Spine3.023_end
+      parentName: Spine3.023
+      position: {x: 1.3969838e-11, y: 0.00076081016, z: -1.862645e-10}
+      rotation: {x: -0.00000014897475, y: 0.00000037800055, z: -0.00000007402575, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Spine3.023_end_end
+      parentName: Spine3.023_end
+      position: {x: -0, y: 0.00076081016, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.024
+      parentName: Spine3.022
+      position: {x: -0.0000000012107193, y: 0.000518707, z: 2.9802322e-10}
+      rotation: {x: 0.12775366, y: -0.0000020653708, z: 0.21246739, w: 0.968781}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999994}
+    - name: Spine3.024_end
+      parentName: Spine3.024
+      position: {x: 7.4505804e-11, y: 0.00082236435, z: -7.4505804e-11}
+      rotation: {x: -0.00000012564121, y: 2.009725e-22, z: -0.00000011025373, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: Spine3.024_end_end
+      parentName: Spine3.024_end
+      position: {x: -0, y: 0.00082236447, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.025
+      parentName: Spine3.022
+      position: {x: -0.0000000010617077, y: 0.000518707, z: 4.4703483e-10}
+      rotation: {x: 0.5198667, y: -0.0000020853342, z: 0.38545567, w: 0.7623402}
+      scale: {x: 1, y: 0.99999994, z: 0.9999998}
+    - name: Spine3.025_end
+      parentName: Spine3.025
+      position: {x: -0, y: 0.0007597619, z: 2.4680047e-10}
+      rotation: {x: 0.0000000830303, y: 0.000000014901161, z: -0.0000000029781484, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Spine3.025_end_end
+      parentName: Spine3.025_end
+      position: {x: -0, y: 0.0007597619, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.026
+      parentName: Spine3.010
+      position: {x: -6.066258e-14, y: 0.0011563625, z: -1.1531859e-13}
+      rotation: {x: -0.45391443, y: 0.44665956, z: 0.4270159, w: 0.64196134}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Spine3.027
+      parentName: Spine3.026
+      position: {x: -1.8626451e-11, y: 0.0018653083, z: -1.862645e-10}
+      rotation: {x: -0.12435706, y: 0.9798736, z: -0.12822913, w: -0.08910849}
+      scale: {x: 0.9999998, y: 0.9999999, z: 0.9999998}
+    - name: Spine3.028
+      parentName: Spine3.027
+      position: {x: -0, y: 0.0017597054, z: -1.0244548e-10}
+      rotation: {x: -0.0019444751, y: -0.7320327, z: 0.03245585, w: 0.6804931}
+      scale: {x: 1, y: 0.9999999, z: 0.99999976}
+    - name: Spine3.029
+      parentName: Spine3.028
+      position: {x: 2.2351741e-10, y: 0.0014280868, z: -2.7008354e-10}
+      rotation: {x: 0.43067834, y: -0.16369414, z: 0.30629236, w: -0.83300984}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Spine3.030
+      parentName: Spine3.029
+      position: {x: -5.9604643e-10, y: 0.0005187045, z: 4.0978193e-10}
+      rotation: {x: 0.029987283, y: -0.12771969, z: 0.06665076, w: 0.9891138}
+      scale: {x: 0.99999976, y: 0.9999998, z: 0.99999976}
+    - name: Spine3.030_end
+      parentName: Spine3.030
+      position: {x: -1.8626451e-11, y: 0.0007608097, z: 5.122274e-11}
+      rotation: {x: -0.00000018868161, y: 0.0000006647897, z: -0.00000014290936, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+    - name: Spine3.030_end_end
+      parentName: Spine3.030_end
+      position: {x: -0, y: 0.0007608103, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.031
+      parentName: Spine3.029
+      position: {x: -6.3329936e-10, y: 0.0005187042, z: 6.3329936e-10}
+      rotation: {x: -0.071784094, y: -0.19829136, z: -0.019742165, w: 0.97731155}
+      scale: {x: 0.99999964, y: 0.99999976, z: 0.99999976}
+    - name: Spine3.031_end
+      parentName: Spine3.031
+      position: {x: -3.7252902e-11, y: 0.0008223645, z: -2.6077032e-10}
+      rotation: {x: -0.00000008096402, y: 0.0000016670674, z: -0.000000056036416, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Spine3.031_end_end
+      parentName: Spine3.031_end
+      position: {x: -0, y: 0.0008223649, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.032
+      parentName: Spine3.029
+      position: {x: -5.2154064e-10, y: 0.0005187043, z: 4.0978193e-10}
+      rotation: {x: -0.045121912, y: -0.3311511, z: -0.025952492, w: 0.9421409}
+      scale: {x: 0.99999964, y: 0.9999999, z: 0.99999964}
+    - name: Spine3.032_end
+      parentName: Spine3.032
+      position: {x: 1.11758706e-10, y: 0.0007597614, z: -7.4505804e-11}
+      rotation: {x: -0.000000032952375, y: 0.0000028247014, z: -0.000000017836218, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.032_end_end
+      parentName: Spine3.032_end
+      position: {x: -0, y: 0.000759762, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.012
+      parentName: Rig.003
+      position: {x: -0.00000081076394, y: -0.00055949326, z: 0.0018031822}
+      rotation: {x: -0.09133028, y: -0.10573653, z: 0.7489097, w: 0.6477753}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Spine3.013
+      parentName: Spine3.012
+      position: {x: 5.5497367e-11, y: 0.002367109, z: 8.1490724e-11}
+      rotation: {x: -0.4156536, y: 0.062606335, z: -0.025104152, w: 0.90701836}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Spine3.014
+      parentName: Spine3.013
+      position: {x: -6.519258e-11, y: 0.001061848, z: 2.828892e-10}
+      rotation: {x: -0.27142656, y: 0.030179217, z: -0.28453404, w: 0.9189436}
+      scale: {x: 1.0000001, y: 1, z: 0.9999998}
+    - name: Spine3.015
+      parentName: Spine3.014
+      position: {x: 3.7252902e-11, y: 0.0012917412, z: 9.3132255e-12}
+      rotation: {x: -0.007712464, y: 0.015676528, z: -0.5746487, w: 0.81821376}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Spine3.016
+      parentName: Spine3.015
+      position: {x: 2.4447217e-11, y: 0.00046216088, z: -5.0058586e-11}
+      rotation: {x: 0.023466136, y: -0.0019678213, z: 0.07725261, w: 0.9967334}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.9999999}
+    - name: Spine3.016_end
+      parentName: Spine3.016
+      position: {x: -9.429641e-11, y: 0.00084945816, z: -1.3969838e-11}
+      rotation: {x: -0.0000003249478, y: -0.0000000011059456, z: 0.000000025953792, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Spine3.016_end_end
+      parentName: Spine3.016_end
+      position: {x: -0, y: 0.0008494584, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.017
+      parentName: Spine3.015
+      position: {x: 2.4447217e-11, y: 0.00046216088, z: -5.0058586e-11}
+      rotation: {x: -0.4061928, y: -0.035752196, z: 0.10529721, w: 0.906996}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Spine3.017_end
+      parentName: Spine3.017
+      position: {x: -4.6566126e-11, y: 0.0008999492, z: -7.4505804e-11}
+      rotation: {x: -0.00000042602045, y: -0.0000000144355, z: 0.00000006998448, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Spine3.017_end_end
+      parentName: Spine3.017_end
+      position: {x: -0, y: 0.00089994975, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.018
+      parentName: Spine3.015
+      position: {x: 2.4447217e-11, y: 0.00046216088, z: -5.0058586e-11}
+      rotation: {x: 0.49321744, y: 0.03583819, z: 0.02862745, w: 0.868696}
+      scale: {x: 1, y: 1, z: 1.0000004}
+    - name: Spine3.018_end
+      parentName: Spine3.018
+      position: {x: 5.122274e-11, y: 0.00069846876, z: -9.3132255e-12}
+      rotation: {x: -0.0000002815925, y: 0.00000007264317, z: 0.00000012598754, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: Spine3.018_end_end
+      parentName: Spine3.018_end
+      position: {x: -0, y: 0.0006984686, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.033
+      parentName: Rig.003
+      position: {x: -0.0000008112151, y: -0.0005594928, z: 0.0018031838}
+      rotation: {x: 0.6201927, y: 0.62247735, z: -0.42961368, w: 0.20812276}
+      scale: {x: 0.9999998, y: 0.99999976, z: 0.99999994}
+    - name: Spine3.034
+      parentName: Spine3.033
+      position: {x: -2.2351741e-10, y: 0.0023671084, z: 3.7252902e-11}
+      rotation: {x: 0.3501702, y: 0.3444238, z: -0.22534126, w: 0.8414121}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Spine3.035
+      parentName: Spine3.034
+      position: {x: 2.0954757e-11, y: 0.0010618485, z: -8.381903e-11}
+      rotation: {x: 0.29510298, y: 0.09922297, z: -0.25989658, w: 0.91406935}
+      scale: {x: 1, y: 0.9999997, z: 0.99999994}
+    - name: Spine3.036
+      parentName: Spine3.035
+      position: {x: -8.9406965e-10, y: 0.0012917412, z: -0.0000000017299316}
+      rotation: {x: 0.010095536, y: -0.19682185, z: -0.574612, w: 0.7943427}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.037
+      parentName: Spine3.036
+      position: {x: 3.0267983e-11, y: 0.00046216184, z: -8.381903e-11}
+      rotation: {x: -0.00806921, y: 0.026685, z: 0.08033396, w: 0.9963781}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.99999994}
+    - name: Spine3.037_end
+      parentName: Spine3.037
+      position: {x: -2.3283063e-11, y: 0.0008494583, z: 1.5366822e-10}
+      rotation: {x: 0.00000022906266, y: -0.0000000033760443, z: -0.00000010655694, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.037_end_end
+      parentName: Spine3.037_end
+      position: {x: -0, y: 0.0008494584, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.038
+      parentName: Spine3.036
+      position: {x: 3.0267983e-11, y: 0.00046216184, z: -8.381903e-11}
+      rotation: {x: 0.4188928, y: 0.05823369, z: 0.024686754, w: 0.90583014}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999976}
+    - name: Spine3.038_end
+      parentName: Spine3.038
+      position: {x: -6.984919e-12, y: 0.00089994975, z: 1.8626451e-11}
+      rotation: {x: 0.00000027680318, y: -0.00000004610047, z: -0.00000010304075, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: Spine3.038_end_end
+      parentName: Spine3.038_end
+      position: {x: -0, y: 0.00089994963, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.039
+      parentName: Spine3.036
+      position: {x: 3.0267983e-11, y: 0.00046216184, z: -8.381903e-11}
+      rotation: {x: -0.4783495, y: -0.014284756, z: 0.12355025, w: 0.8693176}
+      scale: {x: 1, y: 0.9999997, z: 0.9999999}
+    - name: Spine3.039_end
+      parentName: Spine3.039
+      position: {x: -5.5879353e-11, y: 0.00069846906, z: -1.0710209e-10}
+      rotation: {x: 0.000000006089644, y: 0.00000009126961, z: -0.00000011087722, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3.039_end_end
+      parentName: Spine3.039_end
+      position: {x: -0, y: 0.00069846836, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube.012
+      parentName: Frog(Clone)
+      position: {x: -0.000089617744, y: 0.018604554, z: 0.039968297}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
