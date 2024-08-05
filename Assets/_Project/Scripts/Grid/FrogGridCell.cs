@@ -21,6 +21,12 @@ public class FrogGridCell : GridCellBase, IInteractableCell
         
         Disappear();
     }
+    
+    public void DeInteract(ICellInteractable cellInteractable)
+    {
+        Disappear();
+    }
+
 
     public override void Initialize(params object[] args)
     {

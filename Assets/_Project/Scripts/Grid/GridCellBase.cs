@@ -10,8 +10,6 @@ public abstract class GridCellBase : MonoBehaviour
     [SerializeField] protected SerializedDictionary<Direction, List<GridCellBase>> _neighbors = new ();
     [field: SerializeField] public GridState State { get; set; }
 
-    public abstract void Initialize(params object[] args);
-    
     public event UnityAction<GridCellBase> OnGridCellDisappear;
 
     private void Start()
@@ -21,13 +19,16 @@ public abstract class GridCellBase : MonoBehaviour
             gridCellBases.ForEach(gridCellBase => gridCellBase.OnGridCellDisappear += OnNeighborGridCellDisappear);
         }
     }
+    public abstract void Initialize(params object[] args);
 
     private void OnNeighborGridCellDisappear(GridCellBase cellBase)
     {
         foreach (var gridCellBases in _neighbors.Values)
         {
-            if(gridCellBases.Contains(cellBase))
+            if (gridCellBases.Contains(cellBase))
+            {
                 gridCellBases.Remove(cellBase);
+            }
         }
     }
 

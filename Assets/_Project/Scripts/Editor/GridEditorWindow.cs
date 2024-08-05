@@ -149,7 +149,7 @@ public class GridEditorWindow : EditorWindow
         for (int h = 0; h < gridValues[x, y].height; h++)
         {
             bool showColorPicker = gridValues[x, y].states[h] != GridState.Empty;
-            bool showDirection = gridValues[x, y].states[h] == GridState.Frog;
+            bool showDirection = gridValues[x, y].states[h] == GridState.Frog || gridValues[x, y].states[h] == GridState.DirectionChanger;
             EditorGUILayout.BeginHorizontal();
             gridValues[x, y].states[h] =
                 (GridState)EditorGUILayout.EnumPopup(gridValues[x, y].states[h], GUILayout.Width(60));

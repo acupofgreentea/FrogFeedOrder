@@ -10,4 +10,12 @@ public class LevelHolderSO : ScriptableObject
     {
         return level < levels.Count ? levels[level] : null;
     }
+    
+    public void AddLevel(LevelDataSO level)
+    {
+        if (levels.Contains(level))
+            return;
+        
+        levels.Add(level);
+    }
 }

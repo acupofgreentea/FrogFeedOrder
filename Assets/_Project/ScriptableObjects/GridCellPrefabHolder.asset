@@ -15,3 +15,4 @@ MonoBehaviour:
   frogPrefab: {fileID: 873105365528780523, guid: 51bcfc2e86f10e0499c26454705bb14c, type: 3}
   grapePrefab: {fileID: 752734646708714974, guid: 373d97fe9c90a424babb54a05a7168e0, type: 3}
   emptyPrefab: {fileID: 5815625616628301592, guid: 613cc6aa79050af4aae895723688b75d, type: 3}
+  directionChangerPrefab: {fileID: 5796833862093102286, guid: 604d93837e12df8469b7556ba8bbc2a4, type: 3}

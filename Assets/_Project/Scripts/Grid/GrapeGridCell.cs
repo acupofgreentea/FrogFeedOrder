@@ -1,14 +1,12 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class GrapeGridCell : GridCellBase, IInteractableCell
+public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
 {
     [field: SerializeField] public ContentColor GridColor { get; set; }
+
     [SerializeField] private Grape grape;
     
     private TextureChanger _textureChanger;
-
-    public static event UnityAction<ICellInteractable, GrapeGridCell, Grape> OnGrapeCollected;
 
     private void Awake()
     {
@@ -21,17 +19,20 @@ public class GrapeGridCell : GridCellBase, IInteractableCell
         State = GridState.Grape;
         _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
     }
-
-    public void MoveGrape(Vector3 target, float duration)
-    {
-        grape.MoveToFrog(target, duration);
-        Disappear();
-    }
     
     public void Interact(ICellInteractable cellInteractable)
     {
         grape.AnimateGrape();
-        OnGrapeCollected?.Invoke(cellInteractable, this, grape);
+    }
+    
+    public void DeInteract(ICellInteractable cellInteractable)
+    {
+        Disappear();
     }
 
+
+    public void Collect(ICollector collector, Vector3[] path, float duration)
+    {
+        grape.Collect(collector, path, duration);
+    }
 }

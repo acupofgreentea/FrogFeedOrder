@@ -1,55 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Frog : MonoBehaviour, ISelectable, ICellInteractable, ICollector
+public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 {
     [field: SerializeField] public ContentColor ContentColor { get; private set; }
-    [field: SerializeField] public Direction Direction { get; private set; }
+    [field: SerializeField] public Direction Direction { get; set; }
     public bool IsSelectable { get; private set; } = true;
 
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform lineRendererStartPosition;
-
     [SerializeField] private GridCellBase currentGridCell;
+    [SerializeField] private TextureChanger _textureChanger;
 
-    private const float tongueMovementDuration = 0.5f;
+    private const float tongueMovementDuration = 0.25f;
     private GridCellBase moveStartGridCell;
-    private TextureChanger _textureChanger;
 
-    private List<GrapeGridCell> collectedGrapes = new();
+    private List<IInteractableCell> movedInteractableCells = new();
     public UnityAction<ICollector> OnSuccess { get; set; }
     public UnityAction<ICollector> OnFail { get; set; }
 
-    private void Awake()
-    {
-        _textureChanger = GetComponent<TextureChanger>();
-        GrapeGridCell.OnGrapeCollected += OnGrapeCollected;
-    }
-
-    private void OnDisable()
-    {
-        GrapeGridCell.OnGrapeCollected -= OnGrapeCollected;
-    }
+    private Direction actualDirection;
 
     public void Initialize(ContentColor color, Direction direction)
     {
         ContentColor = color;
         Direction = direction;
-        RotateTowardsDirection();
+        actualDirection = direction;
+        transform.rotation = Helpers.GetRotationByDirection(direction);
         _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(color));
     }
 
     private bool IsSameColor(ContentColor targetColor) => targetColor == ContentColor;
-
-    private void OnGrapeCollected(ICellInteractable cellInteractable, GrapeGridCell grapeGridCell, Grape grape)
-    {
-        if (cellInteractable.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
-            return;
-
-        collectedGrapes.Add(grapeGridCell);
-    }
 
 
     public void OnSelected(out ICollector collector)
@@ -60,71 +44,101 @@ public class Frog : MonoBehaviour, ISelectable, ICellInteractable, ICollector
         var nextCell = currentGridCell.GetTopGridCellInDirection(Direction);
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, lineRendererStartPosition.position);
+        movedInteractableCells.Clear();
+        movedInteractableCells.Add(currentGridCell as IInteractableCell);
         MoveToNextCell(nextCell, 1);
         IsSelectable = false;
     }
 
-
     private void OnFailed()
     {
-        MoveBackToFrog(onSequenceFinished: () =>
-        {
-            lineRenderer.positionCount = 1;
-            currentGridCell = moveStartGridCell;
-            OnFail?.Invoke(this);
-            IsSelectable = true;
-        });
+        MoveToPreviousCell(false);
     }
 
     private void HandleOnSuccess()
     {
-        MoveBackToFrog(onSequenceFinished: () => { OnSuccess?.Invoke(this); });
+        MoveToPreviousCell(true);
+    }
 
-        StartCoroutine(Sequence());
-
-        IEnumerator Sequence()
+    private void CollectIfExists(bool isSuccess, IInteractableCell currentInteractableCell)
+    {
+        if (!isSuccess)
+            return;
+        currentInteractableCell.DeInteract(this);
+        if (currentInteractableCell is ICollectable collectable)
         {
-            for (var i = collectedGrapes.Count - 1; i >= 0; i--)
+            GameObject[] moved = new GameObject[movedInteractableCells.Count];
+            for (var i = 0; i < movedInteractableCells.Count; i++)
             {
-                var grape = collectedGrapes[i];
-                grape.MoveGrape(transform.position, (i + 1) * tongueMovementDuration);
-
-                yield return new WaitForSeconds(0.4f);
+                var movedInteractableCell = movedInteractableCells[i];
+                moved[i] = movedInteractableCell.gameObject;
             }
 
-            yield return new WaitForSeconds(0.3f);
-            gameObject.SetActive(false);
+            moved = moved.Reverse().ToArray();
+            collectable.Collect(this, Helpers.GetPath(moved),
+                (lineRenderer.positionCount - 1) * tongueMovementDuration);
         }
     }
 
-    private void MoveBackToFrog(UnityAction onSequenceFinished = null)
+    private void MoveToPreviousCell(bool isSuccess)
     {
-        int totalCount = lineRenderer.positionCount;
-        var lastPosition = lineRenderer.GetPosition(totalCount - 1);
-        lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(1, lastPosition);
+        var startPosition = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
+        var currentInteractableCell = movedInteractableCells[^1];
+        var previousInteractableCell = movedInteractableCells.Count > 1 ? movedInteractableCells[^2] : null;
+        var targetPosition = previousInteractableCell.gameObject.transform.position;
+        targetPosition.y = startPosition.y;
 
-        float totalTime = tongueMovementDuration * (totalCount - 1);
+        CollectIfExists(isSuccess, currentInteractableCell);
+
         float elapsedTime = 0f;
-        var targetPosition = lineRenderer.GetPosition(0);
-        var startPosition = lastPosition;
 
         StartCoroutine(Sequence());
 
         IEnumerator Sequence()
         {
-            while (elapsedTime < totalTime)
+            while (elapsedTime <= tongueMovementDuration)
             {
                 elapsedTime += Time.deltaTime;
-                float step = Mathf.Min(1, elapsedTime / totalTime);
-                lineRenderer.SetPosition(1, Vector3.Lerp(startPosition, targetPosition, step));
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1,
+                    Vector3.Lerp(startPosition, targetPosition, elapsedTime / tongueMovementDuration));
                 yield return null;
             }
 
-            onSequenceFinished?.Invoke();
+            HandleOnReachedPreviousGridCell(isSuccess, currentInteractableCell);
         }
     }
 
+    private void HandleOnReachedPreviousGridCell(bool isSuccess, IInteractableCell currentInteractableCell)
+    {
+        lineRenderer.positionCount -= 1;
+
+        movedInteractableCells.RemoveAt(movedInteractableCells.Count - 1);
+
+        if (lineRenderer.positionCount > 1)
+            MoveToPreviousCell(isSuccess);
+        else
+        {
+            if (isSuccess)
+            {
+                StartCoroutine(Delay());
+
+                IEnumerator Delay()
+                {
+                    yield return new WaitForSeconds(0.25f);
+                    OnSuccess?.Invoke(this);
+                    movedInteractableCells[^1].DeInteract(this);
+                }
+            }
+            else
+            {
+                lineRenderer.positionCount = 1;
+                currentGridCell = moveStartGridCell;
+                OnFail?.Invoke(this);
+                IsSelectable = true;
+                Direction = actualDirection;
+            }
+        }
+    }
 
     private void MoveToNextCell(GridCellBase cell, int index)
     {
@@ -135,31 +149,41 @@ public class Frog : MonoBehaviour, ISelectable, ICellInteractable, ICollector
             return;
         }
 
+        if (cell is IInteractableCell interactableCell)
+        {
+            if (movedInteractableCells.Contains(interactableCell))
+            {
+                Debug.LogError("already moved to this cell");
+                HandleOnSuccess();
+                return;
+            }
+        }
+
         lineRenderer.positionCount = index + 1;
         var startPosition = lineRenderer.GetPosition(index - 1);
-        var targetPosition = startPosition;
-        targetPosition.z = cell.transform.position.z;
+        var targetPosition = cell.transform.position;
+        targetPosition.y = startPosition.y;
 
-        float totalTime = .5f;
         float elapsedTime = 0f;
 
         StartCoroutine(Sequence());
 
         IEnumerator Sequence()
         {
-            while (elapsedTime <= totalTime)
+            while (elapsedTime <= tongueMovementDuration)
             {
                 elapsedTime += Time.deltaTime;
                 lineRenderer.SetPosition(index,
-                    Vector3.Lerp(startPosition, targetPosition, elapsedTime / totalTime));
+                    Vector3.Lerp(startPosition, targetPosition, elapsedTime / tongueMovementDuration));
                 yield return null;
             }
 
-            HandleOnReachedCell(cell, index);
+            HandleOnReachedNextGridCell(cell, index);
         }
     }
 
-    private void HandleOnReachedCell(GridCellBase cell, int index)
+
+    private void HandleOnReachedNextGridCell(GridCellBase cell, int index)
     {
         currentGridCell = cell;
         if (cell is not IInteractableCell interactable)
@@ -170,6 +194,7 @@ public class Frog : MonoBehaviour, ISelectable, ICellInteractable, ICollector
         }
 
         interactable.Interact(this);
+        movedInteractableCells.Add(interactable);
         if (!IsSameColor(interactable.GridColor))
         {
             Debug.LogError("not same color");
@@ -178,25 +203,6 @@ public class Frog : MonoBehaviour, ISelectable, ICellInteractable, ICollector
         else
         {
             MoveToNextCell(currentGridCell.GetTopGridCellInDirection(Direction), ++index);
-        }
-    }
-
-    private void RotateTowardsDirection()
-    {
-        switch (Direction)
-        {
-            case Direction.Up:
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                break;
-            case Direction.Down:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                break;
-            case Direction.Right:
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-                break;
-            case Direction.Left:
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-                break;
         }
     }
 }

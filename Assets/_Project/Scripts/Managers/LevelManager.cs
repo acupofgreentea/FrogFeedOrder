@@ -23,11 +23,13 @@ public class LevelManager : MonoBehaviour
 
     private void OnCollectorMoved(bool isSuccess)
     {
+        if (!isSuccess)
+            return;
+        
         levelFrogCount--;
         if (levelFrogCount == 0)
         {
             OnLevelFinished?.Invoke(true);
-            Debug.Log("Level Completed!");
         }
     }
 

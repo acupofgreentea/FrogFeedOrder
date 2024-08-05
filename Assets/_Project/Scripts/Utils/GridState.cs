@@ -2,5 +2,6 @@ public enum GridState
 {
     Empty,
     Frog,
-    Grape
+    Grape,
+    DirectionChanger
 }

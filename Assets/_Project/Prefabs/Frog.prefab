@@ -215,10 +215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ContentColor>k__BackingField: 0
+  <Direction>k__BackingField: 0
   lineRenderer: {fileID: 5386540550721989581}
   lineRendererStartPosition: {fileID: 7253548070994807712}
-  <Direction>k__BackingField: 0
   currentGridCell: {fileID: 0}
+  _textureChanger: {fileID: 4031890063014017945}
 --- !u!65 &2833788770841788262
 BoxCollider:
   m_ObjectHideFlags: 0

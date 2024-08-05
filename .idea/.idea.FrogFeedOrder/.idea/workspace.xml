@@ -5,36 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38decf20-63fc-4543-912f-b39c2c4d5949" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/GridMover.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/GridMover.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/PlayerController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/PlayerController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Constants.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Constants.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Direction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Direction.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/TextureSetter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/TextureSetter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/CustomContextMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/CustomContextMenu.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/DirectionChangerGridCell.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/DirectionChangerGridCell.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FrogFeedOrder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FrogFeedOrder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/FrogMaterial 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/FrogMaterial 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/FrogMaterial 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/FrogMaterial 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/SquareMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Models/Mats/SquareMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Models/Mats/White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Models/Mats/White.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareBlue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareBlue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareGreen.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareGreen.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquarePurple.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquarePurple.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareRed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareRed.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareYellow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Textures/CellTexture/SquareYellow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/FrogGridCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/FrogGridCell.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/GrapeGridCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/GrapeGridCell.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Frog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Frog.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Grape.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Grape.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/GridCellPrefabHolder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/GridCellPrefabHolder.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/LevelHolder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/LevelHolder.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/FrogGridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/FrogGridCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GrapeGridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GrapeGridCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCellBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCellBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/ICellInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/ICellInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/IInteractableCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/IInteractableCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/ISelectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Interfaces/ISelectable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/UI/EndGameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/UI/EndGameUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Direction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Direction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/GridCellPrefabHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/GridCellPrefabHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/GridState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/GridState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/Helpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/LevelHolderSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/LevelHolderSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

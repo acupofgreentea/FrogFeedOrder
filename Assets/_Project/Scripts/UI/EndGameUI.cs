@@ -34,11 +34,11 @@ public class EndGameUI : MonoBehaviour
 
     private void OnTryAgainButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void OnContinueButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 }

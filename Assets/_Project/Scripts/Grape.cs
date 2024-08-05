@@ -1,17 +1,12 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
 public class Grape : MonoBehaviour, ISelectable
 {
     [SerializeField] private GrapeGridCell _gridCell;
+    [SerializeField] private TextureChanger _textureChanger;
     public bool IsSelectable { get; private set; } = true;
-
-    private TextureChanger _textureChanger;
-
-    private void Awake()
-    {
-        _textureChanger = GetComponent<TextureChanger>();
-    }
 
     private void Start()
     {
@@ -36,5 +31,12 @@ public class Grape : MonoBehaviour, ISelectable
         IsSelectable = false;
         collector = null;
         AnimateGrape();
+    }
+
+    public void Collect(ICollector collector, Vector3[] path, float duration)
+    {
+        transform.DOPath(path, duration, PathType.Linear).SetEase(Ease.Linear)
+            .OnComplete(() => { gameObject.SetActive(false); });
+        transform.parent = null;
     }
 }

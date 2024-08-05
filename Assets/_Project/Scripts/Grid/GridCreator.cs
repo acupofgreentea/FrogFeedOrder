@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using AYellowpaper.SerializedCollections;
 using NaughtyAttributes;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class GridCreator : MonoBehaviour
     private void Awake()
     {
         LevelManager.OnLevelLoaded += CreateGrid;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.OnLevelLoaded -= CreateGrid;
     }
 
     private void CreateGrid(LevelDataSO levelDataSO)
@@ -43,7 +49,7 @@ public class GridCreator : MonoBehaviour
                 for (int y = 0; y < gridCellData.height; y++)
                 {
                     Vector3 spawnPosition = new Vector3(x, y * yOffset, (levelDataSO.Depth - 1 - z)) + originPosition;
-                    Vector3 key = new Vector3(spawnPosition.x, 0, spawnPosition.z);
+                    Vector3 key = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
                     var spawned = Instantiate(prefabHolder.GetPrefabByType(gridCellData.states[y]), spawnPosition,
                         Quaternion.identity, transform);
                     if (!Cells.ContainsKey(key))
@@ -52,7 +58,7 @@ public class GridCreator : MonoBehaviour
                     spawned.OnGridCellDisappear += OnGridCellDisappear;
 
                     Cells[key].Add(spawned);
-                    InitializeGridCell(spawned, gridCellData);
+                    InitializeGridCell(spawned, gridCellData, y);
                 }
             }
         }
@@ -60,13 +66,15 @@ public class GridCreator : MonoBehaviour
         PopulateNeighbors();
     }
 
-    private void InitializeGridCell(GridCellBase cell, GridCellData cellData)
+    private void InitializeGridCell(GridCellBase cell, GridCellData cellData, int index)
     {
         //0-color 1-direction
         if (cellData.colors.Length > 0 && cellData.directions.Length > 0) //if has color and direction -> froggridcell
-            cell.Initialize(cellData.colors[0], cellData.directions[0]);
+            cell.Initialize(cellData.colors[index], cellData.directions[index]);
         else if (cellData.directions.Length == 0) //if has no direction -> grapegridcell
-            cell.Initialize(cellData.colors[0]);
+            cell.Initialize(cellData.colors[index]);
+        else if(cellData.states.Any(x => x == GridState.DirectionChanger))
+            cell.Initialize(cellData.colors[index], cellData.directions[index]);
         else //empty cell
             cell.Initialize();
     }

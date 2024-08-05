@@ -72,8 +72,9 @@ MonoBehaviour:
   _neighbors:
     _serializedList: []
   <State>k__BackingField: 1
-  frog: {fileID: 3965945614618081423}
   <GridColor>k__BackingField: 0
+  <Direction>k__BackingField: 0
+  frog: {fileID: 3965945614618081423}
 --- !u!114 &4840436810651013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
       propertyPath: m_Name
       value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8012306254639257920, guid: c70639fff793b734189d91cedcde01ae, type: 3}
       propertyPath: m_LocalPosition.x
