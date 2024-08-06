@@ -190,8 +190,8 @@ public class GridEditorWindow : EditorWindow
         {
             Debug.LogWarning("No GridCreator found in the scene. Creating one.");
             var g = new GameObject("GridCreator");
-            g.AddComponent<GridCreator>();
-            return;
+            creator = g.AddComponent<GridCreator>();
+            creator.tag = "EditorOnly";
         }
 
         int frogCount = 0;
@@ -289,6 +289,8 @@ public class GridEditorWindow : EditorWindow
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+        
+        DestroyImmediate(level.gameObject);
 
         Debug.Log($"Prefab created at {prefabPath}");
     }

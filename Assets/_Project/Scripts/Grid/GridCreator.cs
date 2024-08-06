@@ -14,18 +14,6 @@ public class GridCreator : MonoBehaviour
     
     public SerializedDictionary<Vector3, List<GridCellBase>> GetCells => Cells;
 
-    private static GridCellPrefabHolder GetLevelHolderSO()
-    {
-        string typeName = nameof(GridCellPrefabHolder);
-
-        string[] guids = AssetDatabase.FindAssets($"t:{typeName}");
-
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        GridCellPrefabHolder levelHolderSo = AssetDatabase.LoadAssetAtPath<GridCellPrefabHolder>(path);
-
-        return levelHolderSo != null ? levelHolderSo : null;
-    }
-
     public void CreateGridFromDataEditor(LevelDataSO levelDataSO, Transform parent)
     {
         if (levelDataSO == null || levelDataSO.gridCells == null)
@@ -40,7 +28,7 @@ public class GridCreator : MonoBehaviour
         GridCellData[,] values = levelDataSO.GetGridValues();
 
 
-        var prefabHolder = GetLevelHolderSO();
+        var prefabHolder = Helpers.FindObject<GridCellPrefabHolder>();
 
         for (int x = 0; x < levelDataSO.Width; x++)
         {
@@ -68,6 +56,7 @@ public class GridCreator : MonoBehaviour
         }
 
         PopulateNeighbors();
+        PopulateAboveNeighbors();
     }
 
     private void InitializeGridCell(GridCellBase cell, GridCellData cellData, int index)
@@ -101,6 +90,17 @@ public class GridCreator : MonoBehaviour
                         gridCell.SetNeighbors(direction, neighbors);
                     }
                 }
+            }
+        }
+    }
+
+    private void PopulateAboveNeighbors()
+    {
+        foreach (var cellBases in Cells.Values)
+        {
+            for (var i = 0; i < cellBases.Count - 1; i++)
+            {
+                cellBases[i].AddNeighbors(Direction.Above, cellBases[i + 1]);
             }
         }
     }

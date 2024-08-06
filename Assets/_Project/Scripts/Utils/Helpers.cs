@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public static class Helpers
 {
-    public static Vector3 GetDirectionVector(Direction direction)
+    public static Vector3 GetDirectionVector(Direction direction, float offset = 0.5f)
     {
         return direction switch
         {
@@ -12,6 +13,7 @@ public static class Helpers
             Direction.Down => Vector3.back,
             Direction.Left => Vector3.left,
             Direction.Right => Vector3.right,
+            Direction.Above => Vector3.up * offset,
             _ => Vector3.zero
         };
     }
@@ -78,5 +80,33 @@ public static class Helpers
 
         moved = moved.Reverse().ToArray();
         return GetPath(moved);
+    }
+    
+    public static T FindObject<T>() where T : ScriptableObject
+    {
+        string typeName = typeof(T).Name;
+
+        string[] guids = AssetDatabase.FindAssets($"t:{typeName}");
+
+        if (guids.Length == 0)
+        {
+            Debug.LogWarning($"No asset of type {typeName} found.");
+            return null;
+        }
+
+        if (guids.Length > 1)
+        {
+            Debug.LogWarning($"Multiple assets of type {typeName} found. Returning the first one.");
+        }
+
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        T asset = AssetDatabase.LoadAssetAtPath<T>(path);
+
+        if (asset == null)
+        {
+            Debug.LogError($"Failed to load asset at path: {path}");
+        }
+
+        return asset;
     }
 }

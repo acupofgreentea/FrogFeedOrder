@@ -201,7 +201,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
             return;
         }
 
-        interactable.Interact(this);
+        interactable.Interact(this, out bool successfulInteraction);
         if (!IsSameColor(interactable.GridColor))
         {
             Debug.LogError("not same color");
@@ -209,6 +209,11 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         }
         else
         {
+            if (!successfulInteraction) //we hit frog or smthng else in the future even though its same color
+            {
+                OnFailed();
+                return;
+            }
             MoveToNextCell(currentGridCell.GetTopGridCellInDirection(Direction), ++index);
         }
     }

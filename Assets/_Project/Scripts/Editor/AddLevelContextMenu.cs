@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 public static class AddLevelContextMenu
 {
@@ -15,22 +16,61 @@ public static class AddLevelContextMenu
         AddToLevelHolder(selectedObject);
     }
 
+    [MenuItem("Assets/Remove Level")]
+    private static void RemoveLevel()
+    {
+        LevelDataSO selectedObject = Selection.activeObject as LevelDataSO;
+        RemoveFromLevelHolderAndDelete(selectedObject);
+    }
+
     public static void AddToLevelHolder(LevelDataSO levelDataSo)
     {
-        
-        LevelHolderSO levelHolderSo = GetLevelHolderSO();
-        levelHolderSo.AddLevel(levelDataSo);
+        LevelHolderSO levelHolderSo = Helpers.FindObject<LevelHolderSO>();
+
+        if (levelHolderSo != null)
+        {
+            levelHolderSo.AddLevel(levelDataSo);
+            EditorUtility.SetDirty(levelHolderSo);
+            AssetDatabase.SaveAssets();
+        }
+        else
+        {
+            Debug.LogError("LevelHolderSO not found.");
+        }
     }
 
-    private static LevelHolderSO GetLevelHolderSO()
+    private static void RemoveFromLevelHolderAndDelete(LevelDataSO levelDataSo)
     {
-        string typeName = nameof(LevelHolderSO);
+        LevelHolderSO levelHolderSo = Helpers.FindObject<LevelHolderSO>();
+        if (levelHolderSo == null)
+        {
+            Debug.LogError("LevelHolderSO not found.");
+            return;
+        }
 
-        string[] guids = AssetDatabase.FindAssets($"t:{typeName}");
+        if (levelHolderSo.RemoveLevel(levelDataSo))
+        {
+            string assetPath = AssetDatabase.GetAssetPath(levelDataSo);
 
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        LevelHolderSO levelHolderSo = AssetDatabase.LoadAssetAtPath<LevelHolderSO>(path);
+            if (string.IsNullOrEmpty(assetPath))
+                return;
 
-        return levelHolderSo != null ? levelHolderSo : null;
+            var levelPrefab = levelDataSo.LevelPrefab;
+            if (levelPrefab != null)
+            {
+                string prefabPath = AssetDatabase.GetAssetPath(levelPrefab);
+                AssetDatabase.DeleteAsset(prefabPath);
+            }
+            AssetDatabase.DeleteAsset(assetPath);
+
+            EditorUtility.SetDirty(levelHolderSo);
+            AssetDatabase.SaveAssets();
+        }
+        else
+        {
+            Debug.LogWarning($"{levelDataSo.name} is not in the Level Holder.");
+        }
     }
+
+    
 }

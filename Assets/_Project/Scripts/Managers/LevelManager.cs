@@ -36,9 +36,19 @@ public class LevelManager : MonoBehaviour
         Frog.OnFrogSpawned -= OnFrogSpawned;
     }
 
+    private LevelDataSO GetLevel()
+    {
+        if (testLevel)
+        {
+            return levelToTest == null ? levelHolder.GetLevel(DataManager.CurrentLevel) : levelToTest;
+        }
+        
+        return levelHolder.GetLevel(DataManager.CurrentLevel);
+    }
+
     private void Start()
     {
-        var levelData =  testLevel ? levelToTest : levelHolder.GetLevel(DataManager.CurrentLevel);
+        LevelDataSO levelData = GetLevel();
         if (levelData == null)
         {
             Debug.LogError("Level data not found!");

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
@@ -15,6 +16,7 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
 
     protected override void Start()
     {
+        grape.gameObject.SetActive(false);
         base.Start();
         _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
     }
@@ -24,9 +26,25 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
         GridColor = (ContentColor) args[0];
         State = GridState.Grape;
     }
-    
-    public void Interact(ICellInteractable cellInteractable)
+
+    protected override void Appear(bool instant)
     {
+        base.Appear(instant);
+        grape.gameObject.SetActive(true);
+        if (instant)
+        {
+            grape.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            grape.transform.localScale = Vector3.zero;
+            grape.transform.DOScale(1f, appearDuration);
+        }
+    }
+
+    public void Interact(ICellInteractable cellInteractable, out bool successfulInteraction)
+    {
+        successfulInteraction = true;
         grape.AnimateGrape();
     }
     

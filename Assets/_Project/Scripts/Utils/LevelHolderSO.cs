@@ -18,4 +18,9 @@ public class LevelHolderSO : ScriptableObject
         
         levels.Add(level);
     }
+    
+    public bool RemoveLevel(LevelDataSO level)
+    {
+        return levels.Remove(level);
+    }
 }

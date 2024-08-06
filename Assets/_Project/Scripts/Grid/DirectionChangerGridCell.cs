@@ -19,8 +19,9 @@ public class DirectionChangerGridCell : GridCellBase, IInteractableCell
     }
 
 
-    public void Interact(ICellInteractable cellInteractable)
+    public void Interact(ICellInteractable cellInteractable, out bool successfulInteraction)
     {
+        successfulInteraction = true;
         cellInteractable.Direction = newDirection;
     }
 

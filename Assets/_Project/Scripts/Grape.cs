@@ -1,4 +1,3 @@
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,6 +7,8 @@ public class Grape : MonoBehaviour, ISelectable
     [SerializeField] private TextureChanger _textureChanger;
     public bool IsSelectable { get; private set; } = true;
 
+    private const float animateDuration = 0.15f;
+
     private void Start()
     {
         _textureChanger.ChangeTexture(GameManager.Instance.GrapeTextureHolder.GetTextureByColor(_gridCell.GridColor));
@@ -15,7 +16,7 @@ public class Grape : MonoBehaviour, ISelectable
 
     public void AnimateGrape()
     {
-        transform.DOScale(1.25f, 0.25f).SetLoops(2, LoopType.Yoyo).OnComplete(() => IsSelectable = true);
+        transform.DOScale(1.25f, animateDuration).SetLoops(2, LoopType.Yoyo).OnComplete(() => IsSelectable = true);
     }
 
     public void MoveToFrog(Vector3 target, float duration)
