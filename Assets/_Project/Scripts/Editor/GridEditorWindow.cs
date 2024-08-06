@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
@@ -56,7 +57,8 @@ public class GridEditorWindow : EditorWindow
         if (editLevel)
         {
             LevelDataSO previousGridData = gridData;
-            gridData = (LevelDataSO)EditorGUILayout.ObjectField("Level Data", gridData, typeof(LevelDataSO), false, GUILayout.Width(400));
+            gridData = (LevelDataSO)EditorGUILayout.ObjectField("Level Data", gridData, typeof(LevelDataSO), false,
+                GUILayout.Width(400));
 
             if (gridData != previousGridData)
             {
@@ -92,16 +94,18 @@ public class GridEditorWindow : EditorWindow
             {
                 DrawGridCell(x, y);
             }
+
             EditorGUILayout.EndHorizontal();
         }
 
         EditorGUILayout.EndScrollView();
 
-        if (GUILayout.Button("Save Level"))
+        if (GUILayout.Button("Create Level"))
         {
-            SaveLevel();
+            CreateLevel();
         }
     }
+
 
     private void DrawGridCell(int x, int y)
     {
@@ -116,10 +120,11 @@ public class GridEditorWindow : EditorWindow
                 if (gridValues[col, y].states[h] != GridState.Empty)
                 {
                     shouldExpand = true;
-                    break; 
+                    break;
                 }
             }
-            if (shouldExpand) break; 
+
+            if (shouldExpand) break;
         }
 
         float cellWidth = shouldExpand ? maxWidth : defaultWidth;
@@ -147,25 +152,28 @@ public class GridEditorWindow : EditorWindow
         for (int h = 0; h < gridValues[x, y].height; h++)
         {
             bool showColorPicker = gridValues[x, y].states[h] != GridState.Empty;
-            bool showDirection = gridValues[x, y].states[h] == GridState.Frog || gridValues[x, y].states[h] == GridState.DirectionChanger;
+            bool showDirection = gridValues[x, y].states[h] == GridState.Frog ||
+                                 gridValues[x, y].states[h] == GridState.DirectionChanger;
             EditorGUILayout.BeginHorizontal();
             gridValues[x, y].states[h] =
                 (GridState)EditorGUILayout.EnumPopup(gridValues[x, y].states[h], GUILayout.Width(60));
 
             if (showColorPicker)
             {
-                if(gridValues[x, y].colors.Length <= h)
+                if (gridValues[x, y].colors.Length <= h)
                     gridValues[x, y].colors = gridValues[x, y].colors.Concat(new ContentColor[1]).ToArray();
-                
-                gridValues[x, y].colors[h] = (ContentColor)EditorGUILayout.EnumPopup(gridValues[x, y].colors[h], GUILayout.Width(60));
+
+                gridValues[x, y].colors[h] =
+                    (ContentColor)EditorGUILayout.EnumPopup(gridValues[x, y].colors[h], GUILayout.Width(60));
             }
 
             if (showDirection)
             {
-                if(gridValues[x, y].directions.Length <= h)
+                if (gridValues[x, y].directions.Length <= h)
                     gridValues[x, y].directions = gridValues[x, y].directions.Concat(new Direction[1]).ToArray();
-                
-                gridValues[x, y].directions[h] = (Direction)EditorGUILayout.EnumPopup(gridValues[x, y].directions[h], GUILayout.Width(60));
+
+                gridValues[x, y].directions[h] =
+                    (Direction)EditorGUILayout.EnumPopup(gridValues[x, y].directions[h], GUILayout.Width(60));
             }
 
             GUILayout.EndHorizontal();
@@ -174,9 +182,18 @@ public class GridEditorWindow : EditorWindow
         EditorGUILayout.EndVertical();
     }
 
-
-    private void SaveLevel()
+    private void CreateLevel()
     {
+        var creator = FindObjectOfType<GridCreator>();
+        
+        if(creator == null)
+        {
+            Debug.LogWarning("No GridCreator found in the scene. Creating one.");
+            var g = new GameObject("GridCreator");
+            g.AddComponent<GridCreator>();
+            return;
+        }
+
         int frogCount = 0;
         for (int i = 0; i < width; i++)
         {
@@ -184,12 +201,37 @@ public class GridEditorWindow : EditorWindow
             {
                 for (int h = 0; h < gridValues[i, j].height; h++)
                 {
-                    if(gridValues[i, j].states[h] == GridState.Frog)
+                    if (gridValues[i, j].states[h] == GridState.Frog)
+                    {
                         frogCount++;
+                    }
                 }
             }
         }
+
+        string levelFileName = "Level_";
+        string levelFileExtension = ".asset";
+        string levelDirectory = "Assets/_Project/ScriptableObjects/Levels/";
+        string prefabDirectory = "Assets/_Project/Prefabs/Levels/";
         
+
+        if (!Directory.Exists(prefabDirectory))
+        {
+            Directory.CreateDirectory(prefabDirectory);
+        }
+
+        int index = 1;
+        string levelPath = $"{levelDirectory}{levelFileName}{index}{levelFileExtension}";
+
+        while (File.Exists(levelPath))
+        {
+            levelPath = $"{levelDirectory}{levelFileName}{index}{levelFileExtension}";
+            index++;
+        }
+        
+        GameObject level = new GameObject();
+        level.AddComponent<GridManager>();
+
         if (editLevel)
         {
             if (gridData == null)
@@ -199,34 +241,55 @@ public class GridEditorWindow : EditorWindow
             }
 
             gridData.Initialize(width, depth, totalMovesCount, frogCount, gridValues);
-            EditorUtility.SetDirty(gridData);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            creator.CreateGridFromDataEditor(gridData, level.transform);
+            level.name = gridData.name;
+            level.GetComponent<GridManager>().CopyCells(creator.GetCells);
         }
         else
         {
-            string fileName = "Level_";
-            string extension = ".asset";
-            string directory = "Assets/_Project/ScriptableObjects/Levels/";
-
-            int index = 1;
-            string path = $"{directory}{fileName}{index}{extension}";
-
-            while (System.IO.File.Exists(path))
-            {
-                path = $"{directory}{fileName}{index}{extension}";
-                index++;
-            }
-
             LevelDataSO newLevelData = CreateInstance<LevelDataSO>();
-            newLevelData.Initialize(width, depth, totalMovesCount, frogCount, gridValues);
-            AssetDatabase.CreateAsset(newLevelData, path);
+            AssetDatabase.CreateAsset(newLevelData, levelPath);
             EditorUtility.SetDirty(newLevelData);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            EditorUtility.FocusProjectWindow();
-            Selection.activeObject = newLevelData;
+            newLevelData.Initialize(width, depth, totalMovesCount, frogCount, gridValues);
+            level.name = newLevelData.name;
+            creator.CreateGridFromDataEditor(newLevelData, level.transform);
+            level.GetComponent<GridManager>().CopyCells(creator.GetCells);
         }
+
+        string prefabPath = Path.Combine(prefabDirectory, level.name + ".prefab");
+        GameObject newPrefab = null;
+
+        if (File.Exists(prefabPath))
+        {
+            if (EditorUtility.DisplayDialog("Prefab Already Exists",
+                    "A prefab with this name already exists. Do you want to overwrite it?", "Yes", "No"))
+            {
+                newPrefab = PrefabUtility.SaveAsPrefabAssetAndConnect(level, prefabPath, InteractionMode.UserAction);
+            }
+        }
+        else
+        {
+            newPrefab = PrefabUtility.SaveAsPrefabAsset(level, prefabPath);
+        }
+
+        if (editLevel)
+        {
+            gridData.LevelPrefab = newPrefab.GetComponent<GridManager>();
+            EditorUtility.SetDirty(gridData);
+        }
+        else
+        {
+            LevelDataSO newLevelData = AssetDatabase.LoadAssetAtPath<LevelDataSO>(levelPath);
+            newLevelData.LevelPrefab = newPrefab.GetComponent<GridManager>();
+            AddLevelContextMenu.AddToLevelHolder(newLevelData);
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log($"Prefab created at {prefabPath}");
     }
 }

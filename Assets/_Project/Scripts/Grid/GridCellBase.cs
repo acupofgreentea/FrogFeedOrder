@@ -12,7 +12,7 @@ public abstract class GridCellBase : MonoBehaviour
 
     public event UnityAction<GridCellBase> OnGridCellDisappear;
 
-    private void Start()
+    protected virtual void Start()
     {
         foreach (var gridCellBases in _neighbors.Values)
         {

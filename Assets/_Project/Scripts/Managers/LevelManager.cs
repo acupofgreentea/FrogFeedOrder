@@ -10,13 +10,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool testLevel = false;
 
     [SerializeField, ShowIf("testLevel")] private LevelDataSO levelToTest;
-
     public static event UnityAction<LevelDataSO> OnLevelLoaded;
     public static event UnityAction<bool> OnLevelFinished;
-    
     public static LevelManager Instance { get; private set; }
 
-    [SerializeField] private List<Frog> activeFrogs = new();
+    private List<Frog> activeFrogs = new();
 
     private void Awake()
     {
@@ -48,6 +46,7 @@ public class LevelManager : MonoBehaviour
         }
 
         activeFrogs = new(levelData.FrogCount);
+        Instantiate(levelData.LevelPrefab.gameObject);
         OnLevelLoaded?.Invoke(levelData);
     }
     

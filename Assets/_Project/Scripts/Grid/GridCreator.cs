@@ -1,7 +1,9 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 
 public class GridCreator : MonoBehaviour
@@ -9,23 +11,22 @@ public class GridCreator : MonoBehaviour
     [SerializeField] private float yOffset = 0.05f;
 
     [SerializeField] private SerializedDictionary<Vector3, List<GridCellBase>> Cells = new();
+    
+    public SerializedDictionary<Vector3, List<GridCellBase>> GetCells => Cells;
 
-    private void Awake()
+    private static GridCellPrefabHolder GetLevelHolderSO()
     {
-        LevelManager.OnLevelLoaded += CreateGrid;
+        string typeName = nameof(GridCellPrefabHolder);
+
+        string[] guids = AssetDatabase.FindAssets($"t:{typeName}");
+
+        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+        GridCellPrefabHolder levelHolderSo = AssetDatabase.LoadAssetAtPath<GridCellPrefabHolder>(path);
+
+        return levelHolderSo != null ? levelHolderSo : null;
     }
 
-    private void OnDisable()
-    {
-        LevelManager.OnLevelLoaded -= CreateGrid;
-    }
-
-    private void CreateGrid(LevelDataSO levelDataSO)
-    {
-        CreateGridFromData(levelDataSO);
-    }
-
-    private void CreateGridFromData(LevelDataSO levelDataSO)
+    public void CreateGridFromDataEditor(LevelDataSO levelDataSO, Transform parent)
     {
         if (levelDataSO == null || levelDataSO.gridCells == null)
         {
@@ -33,13 +34,13 @@ public class GridCreator : MonoBehaviour
             return;
         }
 
-        ClearExistingGrid();
-
+        ClearExistingGridEditor();
         var originPosition = new Vector3(-(levelDataSO.Width - 1) / 2f, 0f, -(levelDataSO.Depth - 1) / 2f);
 
         GridCellData[,] values = levelDataSO.GetGridValues();
 
-        var prefabHolder = GameManager.Instance.GridCellPrefabHolder;
+
+        var prefabHolder = GetLevelHolderSO();
 
         for (int x = 0; x < levelDataSO.Width; x++)
         {
@@ -50,12 +51,15 @@ public class GridCreator : MonoBehaviour
                 {
                     Vector3 spawnPosition = new Vector3(x, y * yOffset, (levelDataSO.Depth - 1 - z)) + originPosition;
                     Vector3 key = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
-                    var spawned = Instantiate(prefabHolder.GetPrefabByType(gridCellData.states[y]), spawnPosition,
-                        Quaternion.identity, transform);
+                    var spawned =
+                        PrefabUtility.InstantiatePrefab(prefabHolder.GetPrefabByType(gridCellData.states[y])) as
+                            GridCellBase;
+                    spawned.transform.position = spawnPosition;
+                    spawned.transform.rotation = Quaternion.identity;
+                    spawned.transform.SetParent(parent);
+
                     if (!Cells.ContainsKey(key))
                         Cells.Add(key, new List<GridCellBase>());
-
-                    spawned.OnGridCellDisappear += OnGridCellDisappear;
 
                     Cells[key].Add(spawned);
                     InitializeGridCell(spawned, gridCellData, y);
@@ -73,7 +77,7 @@ public class GridCreator : MonoBehaviour
             cell.Initialize(cellData.colors[index], cellData.directions[index]);
         else if (cellData.directions.Length == 0) //if has no direction -> grapegridcell
             cell.Initialize(cellData.colors[index]);
-        else if(cellData.states.Any(x => x == GridState.DirectionChanger))
+        else if (cellData.states.Any(x => x == GridState.DirectionChanger))
             cell.Initialize(cellData.colors[index], cellData.directions[index]);
         else //empty cell
             cell.Initialize();
@@ -100,27 +104,17 @@ public class GridCreator : MonoBehaviour
             }
         }
     }
-
+    
     [Button]
-    private void ClearExistingGrid()
+    private void ClearExistingGridEditor()
     {
-        foreach (Transform child in transform)
+        var cells = transform.GetComponentsInChildren<GridCellBase>();
+        foreach (GridCellBase child in cells)
         {
-            Destroy(child.gameObject);
+            DestroyImmediate(child.gameObject);
         }
 
         Cells.Clear();
     }
-
-    private void OnGridCellDisappear(GridCellBase gridCellBase)
-    {
-        foreach (var cell in Cells)
-        {
-            if (cell.Value.Contains(gridCellBase))
-            {
-                cell.Value.Remove(gridCellBase);
-                break;
-            }
-        }
-    }
 }
+#endif

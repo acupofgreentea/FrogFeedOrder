@@ -18,7 +18,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
     private const float tongueMovementDuration = 0.25f;
     private GridCellBase moveStartGridCell;
 
-    private List<IInteractableCell> movedInteractableCells = new();
+    private List<GridCellBase> visitedCells = new();
     public UnityAction<ICollector> OnSuccess { get; set; }
     public UnityAction<ICollector> OnFail { get; set; }
 
@@ -33,7 +33,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         actualDirection = direction;
         transform.rotation = Helpers.GetRotationByDirection(direction);
         _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(color));
-        
+
         OnFrogSpawned?.Invoke(this);
     }
 
@@ -48,8 +48,8 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         var nextCell = currentGridCell.GetTopGridCellInDirection(Direction);
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, lineRendererStartPosition.position);
-        movedInteractableCells.Clear();
-        movedInteractableCells.Add(currentGridCell as IInteractableCell);
+        visitedCells.Clear();
+        visitedCells.Add(currentGridCell);
         MoveToNextCell(nextCell, 1);
         IsSelectable = false;
     }
@@ -64,32 +64,41 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         MoveToPreviousCell(true);
     }
 
-    private void CollectIfExists(bool isSuccess, IInteractableCell currentInteractableCell)
+    private void CollectIfExists(bool isSuccess, GridCellBase currentGridCellBase)
     {
         if (!isSuccess)
             return;
-        currentInteractableCell.DeInteract(this);
-        if (currentInteractableCell is ICollectable collectable)
-        {
-            GameObject[] moved = new GameObject[movedInteractableCells.Count];
-            for (var i = 0; i < movedInteractableCells.Count; i++)
-            {
-                var movedInteractableCell = movedInteractableCells[i];
-                moved[i] = movedInteractableCell.gameObject;
-            }
 
-            moved = moved.Reverse().ToArray();
-            collectable.Collect(this, Helpers.GetPath(moved),
-                (lineRenderer.positionCount - 1) * tongueMovementDuration);
+        if (currentGridCellBase is not IInteractableCell interactableCell)
+            return;
+
+        interactableCell.DeInteract(this);
+
+        if (currentGridCellBase is not ICollectable collectable)
+            return;
+
+        GameObject[] moved = new GameObject[visitedCells.Count];
+        for (var i = 0; i < visitedCells.Count; i++)
+        {
+            var movedInteractableCell = visitedCells[i];
+            moved[i] = movedInteractableCell.gameObject;
         }
+
+        moved = moved.Reverse().ToArray();
+        collectable.Collect(this, Helpers.GetPath(moved),
+            (lineRenderer.positionCount - 1) * tongueMovementDuration);
     }
 
     private void MoveToPreviousCell(bool isSuccess)
     {
         var startPosition = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
-        var currentInteractableCell = movedInteractableCells[^1];
-        var previousInteractableCell = movedInteractableCells.Count > 1 ? movedInteractableCells[^2] : null;
-        var targetPosition = previousInteractableCell.gameObject.transform.position;
+        var currentInteractableCell = visitedCells[^1];
+        var previousInteractableCell = visitedCells.Count > 1 ? visitedCells[^2] : null;
+
+        Vector3 targetPosition = previousInteractableCell == null
+            ? moveStartGridCell.transform.position
+            : previousInteractableCell.gameObject.transform.position;
+
         targetPosition.y = startPosition.y;
 
         CollectIfExists(isSuccess, currentInteractableCell);
@@ -108,15 +117,15 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
                 yield return null;
             }
 
-            HandleOnReachedPreviousGridCell(isSuccess, currentInteractableCell);
+            HandleOnReachedPreviousGridCell(isSuccess);
         }
     }
 
-    private void HandleOnReachedPreviousGridCell(bool isSuccess, IInteractableCell currentInteractableCell)
+    private void HandleOnReachedPreviousGridCell(bool isSuccess)
     {
         lineRenderer.positionCount -= 1;
 
-        movedInteractableCells.RemoveAt(movedInteractableCells.Count - 1);
+        visitedCells.RemoveAt(visitedCells.Count - 1);
 
         if (lineRenderer.positionCount > 1)
             MoveToPreviousCell(isSuccess);
@@ -124,13 +133,11 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         {
             if (isSuccess)
             {
-                StartCoroutine(Delay());
-
-                IEnumerator Delay()
+                OnSuccess?.Invoke(this);
+                var lastCell = visitedCells[^1];
+                if (lastCell is IInteractableCell interactableCell)
                 {
-                    yield return new WaitForSeconds(0.25f);
-                    OnSuccess?.Invoke(this);
-                    movedInteractableCells[^1].DeInteract(this);
+                    interactableCell.DeInteract(this);
                 }
             }
             else
@@ -153,14 +160,11 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
             return;
         }
 
-        if (cell is IInteractableCell interactableCell)
+        if (visitedCells.Contains(cell))
         {
-            if (movedInteractableCells.Contains(interactableCell))
-            {
-                Debug.LogError("already moved to this cell");
-                HandleOnSuccess();
-                return;
-            }
+            Debug.LogError("already moved to this cell");
+            HandleOnSuccess();
+            return;
         }
 
         lineRenderer.positionCount = index + 1;
@@ -190,15 +194,14 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
     private void HandleOnReachedNextGridCell(GridCellBase cell, int index)
     {
         currentGridCell = cell;
-        if (cell is not IInteractableCell interactable)
+        visitedCells.Add(cell);
+        if (cell is not IInteractableCell interactable) // hit white one so win
         {
-            Debug.LogError("wrong move!");
-            OnFailed();
+            HandleOnSuccess();
             return;
         }
 
         interactable.Interact(this);
-        movedInteractableCells.Add(interactable);
         if (!IsSameColor(interactable.GridColor))
         {
             Debug.LogError("not same color");

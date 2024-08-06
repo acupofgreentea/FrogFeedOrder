@@ -14,6 +14,13 @@ public class FrogGridCell : GridCellBase, IInteractableCell
         frog.OnSuccess += OnFrogSuccess;
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
+        frog.Initialize(GridColor, Direction);
+    }
+
     private void OnFrogSuccess(ICollector frog)
     {
         if (this.frog != (Frog)frog)
@@ -27,14 +34,11 @@ public class FrogGridCell : GridCellBase, IInteractableCell
         Disappear();
     }
 
-
     public override void Initialize(params object[] args)
     {
         GridColor = (ContentColor) args[0];
         State = GridState.Frog;
         Direction = (Direction) args[1];
-        _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
-        frog.Initialize(GridColor, Direction);
     }
 
     public void Interact(ICellInteractable cellInteractable)

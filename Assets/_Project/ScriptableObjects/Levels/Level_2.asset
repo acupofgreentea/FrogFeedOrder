@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Width>k__BackingField: 4
   <Depth>k__BackingField: 4
-  <MoveCount>k__BackingField: 5
+  <MoveCount>k__BackingField: 4
   <FrogCount>k__BackingField: 1
+  <LevelPrefab>k__BackingField: {fileID: 578777717054829330, guid: db0630c2cb5195746bce2286295c87f3, type: 3}
   gridCells:
   - height: 1
     states: 03000000

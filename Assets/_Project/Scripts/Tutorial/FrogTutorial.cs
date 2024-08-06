@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,8 +6,9 @@ public class FrogTutorial : Tutorial
 {
     private int leftFrogsCount;
     private const string tutorialText = "Click on Frog to Feed!";
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
         if (DataManager.CurrentLevel == 0) //first level
             TutorialManager.Instance.StartTutorial(this);
     }

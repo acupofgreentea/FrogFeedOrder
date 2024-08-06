@@ -10,9 +10,11 @@ public class LevelDataSO : ScriptableObject
     [field: SerializeField] public int MoveCount { get; private set; }
     
     [field: SerializeField, ReadOnly] public int FrogCount { get; private set; }
+    
+    [field: SerializeField] public GridManager LevelPrefab { get; set; }
     public List<GridCellData> gridCells;
 
-    public void Initialize(int width, int depth, int moveCount, int frogCount, GridCellData[,] values)
+    public void Initialize(int width, int depth, int moveCount, int frogCount,  GridCellData[,] values)
     {
         this.Width = width;
         this.Depth = depth;

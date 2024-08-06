@@ -9,12 +9,17 @@ public static class AddLevelContextMenu
     }
 
     [MenuItem("Assets/Add to Level Holder")]
-    private static void CustomAction()
+    private static void AddToLevelHolder()
     {
         LevelDataSO selectedObject = Selection.activeObject as LevelDataSO;
+        AddToLevelHolder(selectedObject);
+    }
 
+    public static void AddToLevelHolder(LevelDataSO levelDataSo)
+    {
+        
         LevelHolderSO levelHolderSo = GetLevelHolderSO();
-        levelHolderSo.AddLevel(selectedObject);
+        levelHolderSo.AddLevel(levelDataSo);
     }
 
     private static LevelHolderSO GetLevelHolderSO()

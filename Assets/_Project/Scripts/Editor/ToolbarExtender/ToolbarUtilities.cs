@@ -15,7 +15,7 @@ public class ToolbarUtilities
     static ToolbarUtilities()
     {
         UnityToolbarExtender.LeftToolbarGUI.Add(OnToolbarGUI);
-        EditorSceneManager.playModeStartScene = loadingScene;
+        EditorSceneManager.playModeStartScene = null;
     }
 
     static void OnToolbarGUI()
@@ -26,7 +26,7 @@ public class ToolbarUtilities
         {
             if (SceneManager.GetActiveScene().name == loadingScene.name)
                 return;
-
+            
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
                 EditorSceneManager.OpenScene(loadingScenePath);
@@ -37,10 +37,19 @@ public class ToolbarUtilities
         {
             if (SceneManager.GetActiveScene().name == gameScene.name)
                 return;
-
+            
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
                 EditorSceneManager.OpenScene(gameScenePath);
+            }
+        }
+
+        if (GUILayout.Button(new GUIContent("P", "Start from loading scene"), ToolbarStyles.commandButtonStyle))
+        {
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.playModeStartScene = loadingScene;
+                EditorApplication.EnterPlaymode();
             }
         }
     }
