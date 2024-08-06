@@ -14,70 +14,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Width>k__BackingField: 4
   <Depth>k__BackingField: 4
-  <MoveCount>k__BackingField: 3
-  <FrogCount>k__BackingField: 3
+  <MoveCount>k__BackingField: 2
+  <FrogCount>k__BackingField: 2
   gridCells:
   - height: 1
     states: 00000000
     colors: 02000000
-    directions: 
-  - height: 1
-    states: 02000000
-    colors: 00000000
     directions: 00000000
   - height: 2
-    states: 0100000001000000
+    states: 0000000002000000
+    colors: 0000000000000000
+    directions: 0000000000000000
+  - height: 2
+    states: 0000000001000000
     colors: 0200000002000000
     directions: 0100000001000000
   - height: 1
     states: 00000000
     colors: 02000000
-    directions: 
+    directions: 00000000
   - height: 1
-    states: 02000000
+    states: 00000000
     colors: 01000000
-    directions: 
-  - height: 1
-    states: 02000000
-    colors: 00000000
-    directions: 02000000
-  - height: 2
-    states: 0200000002000000
-    colors: 0200000002000000
-    directions: 0000000000000000
-  - height: 1
-    states: 00000000
-    colors: 02000000
-    directions: 
-  - height: 1
-    states: 00000000
-    colors: 02000000
-    directions: 
-  - height: 1
-    states: 02000000
-    colors: 00000000
     directions: 00000000
   - height: 2
-    states: 0200000002000000
+    states: 0000000002000000
+    colors: 0000000000000000
+    directions: 0200000000000000
+  - height: 2
+    states: 0000000002000000
     colors: 0200000002000000
     directions: 0000000000000000
   - height: 1
     states: 00000000
     colors: 02000000
-    directions: 
+    directions: 00000000
   - height: 1
     states: 00000000
     colors: 02000000
-    directions: 
-  - height: 1
-    states: 01000000
-    colors: 00000000
     directions: 00000000
   - height: 2
-    states: 0200000002000000
+    states: 0000000002000000
+    colors: 0000000000000000
+    directions: 0000000000000000
+  - height: 2
+    states: 0000000002000000
     colors: 0200000002000000
     directions: 0000000000000000
   - height: 1
     states: 00000000
     colors: 02000000
-    directions: 
+    directions: 00000000
+  - height: 1
+    states: 00000000
+    colors: 02000000
+    directions: 00000000
+  - height: 2
+    states: 0000000001000000
+    colors: 0000000000000000
+    directions: 0000000000000000
+  - height: 2
+    states: 0000000002000000
+    colors: 0200000002000000
+    directions: 0000000000000000
+  - height: 1
+    states: 00000000
+    colors: 02000000
+    directions: 00000000

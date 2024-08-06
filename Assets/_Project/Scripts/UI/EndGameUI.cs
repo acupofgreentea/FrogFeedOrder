@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndGameUI : MonoBehaviour
@@ -26,19 +24,32 @@ public class EndGameUI : MonoBehaviour
 
     private void OnLevelFinished(bool isWin)
     {
-        if (isWin)
-            winPanel.SetActive(true);
-        else
-            failPanel.SetActive(true);
+        TransitionManager.Instance.Fade(2f, () =>
+        {
+            if (isWin)
+                winPanel.SetActive(true);
+            else
+                failPanel.SetActive(true); 
+        });
     }
 
     private void OnTryAgainButtonClicked()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneController.Instance.LoadSceneAsync(Constants.GAME_SCENE_INDEX, 1f,
+            () =>
+            {
+                TransitionManager.Instance.Fade(2f);
+
+            });
     }
 
     private void OnContinueButtonClicked()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneController.Instance.LoadSceneAsync(Constants.GAME_SCENE_INDEX, 1f,
+        () =>
+        {
+            TransitionManager.Instance.Fade(2f);
+
+        });
     }
 }

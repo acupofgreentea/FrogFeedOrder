@@ -5,7 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     private Camera mainCam;
     public static event UnityAction<int> OnRemainingMovesUpdated;
-    public static event UnityAction<bool> OnCollecterMoved;
+    public static event UnityAction<bool, ICollector> OnCollecterMoved;
+    
+    public static event UnityAction<ISelectable> OnSelectableSelected;
     public static event UnityAction OnRemaningMovesFinished;    
     private int remaningMoves = 5;
     private int fakeRemainingMoves;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
                     return;
                 
                 remaningMoves--;
+                OnSelectableSelected?.Invoke(selectable);
                 OnRemainingMovesUpdated?.Invoke(remaningMoves);
 
                 selectable.OnSelected(out ICollector collector);
@@ -54,20 +57,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleOnFail(ICollector arg0)
+    private void HandleOnFail(ICollector collector)
     {
-        OnCollecterMoved?.Invoke(false);
-        arg0.OnSuccess -= HandleOnSuccess;
-        arg0.OnFail -= HandleOnFail;
+        OnCollecterMoved?.Invoke(false, collector);
+        collector.OnSuccess -= HandleOnSuccess;
+        collector.OnFail -= HandleOnFail;
         
         UpdateRemainingMoves();
     }
 
-    private void HandleOnSuccess(ICollector arg0)
+    private void HandleOnSuccess(ICollector collector)
     {
-        OnCollecterMoved?.Invoke(true);
-        arg0.OnSuccess -= HandleOnSuccess;
-        arg0.OnFail -= HandleOnFail;
+        OnCollecterMoved?.Invoke(true, collector);
+        collector.OnSuccess -= HandleOnSuccess;
+        collector.OnFail -= HandleOnFail;
         
         UpdateRemainingMoves();
     }

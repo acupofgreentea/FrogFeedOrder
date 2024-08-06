@@ -8,7 +8,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 {
     [field: SerializeField] public ContentColor ContentColor { get; private set; }
     [field: SerializeField] public Direction Direction { get; set; }
-    public bool IsSelectable { get; private set; } = true;
+    public bool IsSelectable { get; set; } = true;
 
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform lineRendererStartPosition;
@@ -22,6 +22,8 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
     public UnityAction<ICollector> OnSuccess { get; set; }
     public UnityAction<ICollector> OnFail { get; set; }
 
+    public static event UnityAction<Frog> OnFrogSpawned;
+
     private Direction actualDirection;
 
     public void Initialize(ContentColor color, Direction direction)
@@ -31,6 +33,8 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         actualDirection = direction;
         transform.rotation = Helpers.GetRotationByDirection(direction);
         _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(color));
+        
+        OnFrogSpawned?.Invoke(this);
     }
 
     private bool IsSameColor(ContentColor targetColor) => targetColor == ContentColor;

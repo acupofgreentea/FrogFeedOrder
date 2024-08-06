@@ -8,7 +8,7 @@ public class LevelHolderSO : ScriptableObject
 
     public LevelDataSO GetLevel(int level)
     {
-        return level < levels.Count ? levels[level] : null;
+        return level < levels.Count ? levels[level] : levels[^1];
     }
     
     public void AddLevel(LevelDataSO level)

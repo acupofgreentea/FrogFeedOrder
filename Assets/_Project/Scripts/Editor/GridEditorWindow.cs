@@ -12,10 +12,10 @@ public class GridEditorWindow : EditorWindow
     private LevelDataSO gridData;
     private bool editLevel = false;
 
-    [MenuItem("Window/Custom Grid Editor")]
+    [MenuItem("Tools/Level Editor")]
     public static void ShowWindow()
     {
-        GetWindow<GridEditorWindow>("Grid Editor");
+        GetWindow<GridEditorWindow>("Level Editor");
     }
 
     private void OnEnable()
@@ -49,8 +49,10 @@ public class GridEditorWindow : EditorWindow
     {
         GUILayout.Label("Grid Settings", EditorStyles.boldLabel);
 
+        int newWidth = EditorGUILayout.IntField("Width", width, GUILayout.Width(200));
+        int newHeight = EditorGUILayout.IntField("Depth", depth, GUILayout.Width(200));
+        totalMovesCount = EditorGUILayout.IntField("Total Moves", totalMovesCount, GUILayout.Width(200));
         editLevel = EditorGUILayout.Toggle("Edit Level", editLevel);
-
         if (editLevel)
         {
             LevelDataSO previousGridData = gridData;
@@ -69,10 +71,6 @@ public class GridEditorWindow : EditorWindow
                 InitializeGrid();
             }
         }
-
-        int newWidth = EditorGUILayout.IntField("Width", width, GUILayout.Width(200));
-        int newHeight = EditorGUILayout.IntField("Depth", depth, GUILayout.Width(200));
-        totalMovesCount = EditorGUILayout.IntField("Total Moves", totalMovesCount, GUILayout.Width(200));
 
         GUILayout.Space(20);
 

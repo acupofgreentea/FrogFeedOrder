@@ -39,6 +39,6 @@ public class FrogGridCell : GridCellBase, IInteractableCell
 
     public void Interact(ICellInteractable cellInteractable)
     {
-        transform.DOScale(1.25f, 0.25f).SetLoops(2, LoopType.Yoyo);
+        frog.transform.DOScale(1.25f, 0.25f).SetLoops(2, LoopType.Yoyo);
     }
 }
