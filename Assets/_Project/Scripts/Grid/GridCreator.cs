@@ -9,6 +9,7 @@ using UnityEngine;
 public class GridCreator : MonoBehaviour
 {
     [SerializeField] private float yOffset = 0.05f;
+    [SerializeField] private float padding = 0.1f;
 
     [SerializeField] private SerializedDictionary<Vector3, List<GridCellBase>> Cells = new();
     
@@ -37,8 +38,10 @@ public class GridCreator : MonoBehaviour
                 var gridCellData = values[x, z];
                 for (int y = 0; y < gridCellData.height; y++)
                 {
+                    float pad = z == 0  ? 1 : (1 + padding * y);
                     Vector3 spawnPosition = new Vector3(x, y * yOffset, (levelDataSO.Depth - 1 - z)) + originPosition;
                     Vector3 key = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
+                    spawnPosition.z *= pad;
                     var spawned =
                         PrefabUtility.InstantiatePrefab(prefabHolder.GetPrefabByType(gridCellData.states[y])) as
                             GridCellBase;
@@ -80,7 +83,7 @@ public class GridCreator : MonoBehaviour
             foreach (var direction in (Direction[])System.Enum.GetValues(typeof(Direction)))
             {
                 var neighbors = new List<GridCellBase>();
-                var directionVector = Helpers.GetDirectionVector(direction);
+                var directionVector = Helpers.GetDirectionVector(direction, yOffset);
                 var key = cell.Key + directionVector;
                 if (Cells.TryGetValue(key, out var value))
                 {

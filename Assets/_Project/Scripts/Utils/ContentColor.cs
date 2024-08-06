@@ -2,5 +2,7 @@ public enum ContentColor
 {
     Red,
     Green,
-    Blue
+    Blue,
+    Yellow,
+    Purple
 }

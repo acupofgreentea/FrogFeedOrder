@@ -19,7 +19,7 @@ public class FrogGridCell : GridCellBase, IInteractableCell
     {
         frog.gameObject.SetActive(false);
         base.Start();
-        _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
+        _textureChanger.ChangeTexture(GameManager.Instance.SquareTextureHolder.GetTextureByColor(GridColor));
         frog.Initialize(GridColor, Direction);
     }
 

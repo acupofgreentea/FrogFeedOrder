@@ -6,25 +6,25 @@ public class FrogTutorial : Tutorial
 {
     private int leftFrogsCount;
     private const string tutorialText = "Click on Frog to Feed!";
+
     private IEnumerator Start()
     {
         yield return null;
-        if (DataManager.CurrentLevel == 0) //first level
-            TutorialManager.Instance.StartTutorial(this);
+        TutorialManager.Instance.StartTutorial(this); //first tutorial
     }
 
     public override void StartTutorial()
     {
         PlayerController.OnSelectableSelected += HandleSelectableSelected;
         leftFrogsCount = LevelManager.Instance.GetActiveFrogs().Count;
-        
+
         var frogs = LevelManager.Instance.GetActiveFrogs();
-        
+
         foreach (Frog frog in frogs)
         {
             frog.IsSelectable = false;
         }
-        
+
         SelectFrog(frogs);
     }
 
@@ -32,7 +32,7 @@ public class FrogTutorial : Tutorial
     {
         var currentFrog = frogs[leftFrogsCount - 1];
         currentFrog.IsSelectable = true;
-        
+
         TutorialUI.UpdateTutorialUI?.Invoke(true, currentFrog.transform.position, tutorialText);
     }
 
@@ -40,9 +40,9 @@ public class FrogTutorial : Tutorial
     {
         if (selectedFrog is not Frog)
             return;
-        
+
         leftFrogsCount--;
-        
+
         if (leftFrogsCount == 0)
             TutorialManager.Instance.EndCurrentTutorial();
         else

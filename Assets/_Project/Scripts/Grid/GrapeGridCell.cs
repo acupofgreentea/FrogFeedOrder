@@ -18,7 +18,7 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
     {
         grape.gameObject.SetActive(false);
         base.Start();
-        _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(GridColor));
+        _textureChanger.ChangeTexture(GameManager.Instance.SquareTextureHolder.GetTextureByColor(GridColor));
     }
 
     public override void Initialize(params object[] args)

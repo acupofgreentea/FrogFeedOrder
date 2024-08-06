@@ -100,7 +100,8 @@ public class GridEditorWindow : EditorWindow
 
         EditorGUILayout.EndScrollView();
 
-        if (GUILayout.Button("Create Level"))
+        string buttonName = editLevel ? "Save Level" : "Create Level";
+        if (GUILayout.Button(buttonName))
         {
             CreateLevel();
         }
@@ -113,14 +114,14 @@ public class GridEditorWindow : EditorWindow
         float maxWidth = 200f;
         bool shouldExpand = false;
 
-        for (int col = 0; col < width; col++)
+        for (int a = 0; a < width; a++)
         {
-            for (int h = 0; h < gridValues[col, y].height; h++)
+            for (int b = 0; b < depth; b++)
             {
-                if (gridValues[col, y].states[h] != GridState.Empty)
+                for (int i = 0; i < gridValues[a,b].height; i++)
                 {
-                    shouldExpand = true;
-                    break;
+                    if(gridValues[a, b].states[i] != GridState.Empty)
+                        shouldExpand = true;
                 }
             }
 

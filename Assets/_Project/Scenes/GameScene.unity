@@ -123,37 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &52855873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 52855874}
-  m_Layer: 0
-  m_Name: ObjectPoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &52855874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52855873}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1504005196}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &62708388
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f7cc9ec5322754eb396dd36deb4d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yOffset: 0.05
+  yOffset: 0.08
+  padding: 0.025
   Cells:
     _serializedList:
     - Key: {x: -1.5, y: 0, z: 1.5}
@@ -192,8 +162,10 @@ MonoBehaviour:
     - Key: {x: -1.5, y: 0, z: 0.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: -1.5, y: 0, z: -0.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: -1.5, y: 0, z: -1.5}
       Value:
@@ -201,26 +173,38 @@ MonoBehaviour:
     - Key: {x: -0.5, y: 0, z: 1.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: -0.5, y: 0, z: 0.5}
       Value:
+      - {fileID: 0}
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: -0.5, y: 0, z: -0.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: -0.5, y: 0, z: -1.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: 1.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: 0.5}
       Value:
+      - {fileID: 0}
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: -0.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: -1.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: 1.5}
       Value:
@@ -228,8 +212,10 @@ MonoBehaviour:
     - Key: {x: 1.5, y: 0, z: 0.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: -0.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: -1.5}
       Value:
@@ -347,8 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelHolder: {fileID: 11400000, guid: d1e1461018981e54395ccf73929995a4, type: 2}
-  testLevel: 1
-  levelToTest: {fileID: 11400000, guid: 6231801ee20b0ec4e97abb441e5aec42, type: 2}
+  testLevel: 0
+  levelToTest: {fileID: 11400000, guid: 2d2717f8b79be5d47b0a6f06712493a5, type: 2}
 --- !u!4 &465742009
 Transform:
   m_ObjectHideFlags: 0
@@ -374,7 +360,6 @@ GameObject:
   m_Component:
   - component: {fileID: 630589008}
   - component: {fileID: 630589009}
-  - component: {fileID: 630589010}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -410,18 +395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentTutorial>k__BackingField: {fileID: 0}
---- !u!114 &630589010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630589007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abf5f11462a8425ca204ffe29c8ed55b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +817,6 @@ Transform:
   - {fileID: 902345436}
   - {fileID: 465742009}
   - {fileID: 630589008}
-  - {fileID: 52855874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1518440985

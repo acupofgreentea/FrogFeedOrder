@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
@@ -58,6 +57,7 @@ public class InGameUI : MonoBehaviour
     }
     private void UpdateRemainingMoves(int remainingMoves)
     {
-        remainingMovesText.text = $"Moves: {remainingMoves}";
+        string text = remainingMoves == 0 ? "No Moves" : $"{remainingMoves} Moves";
+        remainingMovesText.text = text;
     }
 }
