@@ -61,6 +61,7 @@ public class FrogGridCell : GridCellBase, IInteractableCell
     public void Interact(ICellInteractable cellInteractable, out bool successfulInteraction)
     {
         successfulInteraction = false; // if we hit a frog we must fail even if it is the same color
+        HapticManager.MediumHaptic();
         frog.transform.DOScale(1.25f, animateDuration).SetLoops(2, LoopType.Yoyo);
     }
 }

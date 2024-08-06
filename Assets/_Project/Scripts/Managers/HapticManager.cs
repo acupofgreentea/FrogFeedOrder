@@ -8,7 +8,7 @@ public static class HapticManager
         if (DataManager.Haptic == false)
             return;
         
-        Debug.LogError("light haptic");
+        Debug.Log("light haptic");
         HapticFeedback.LightFeedback();
     }
     
@@ -17,7 +17,7 @@ public static class HapticManager
         if (DataManager.Haptic == false)
             return;
         
-        Debug.LogError("medium haptic");
+        Debug.Log("medium haptic");
         HapticFeedback.MediumFeedback();
     }
     
@@ -26,7 +26,7 @@ public static class HapticManager
         if (DataManager.Haptic == false)
             return;
         
-        Debug.LogError("heavy haptic");
+        Debug.Log("heavy haptic");
         HapticFeedback.HeavyFeedback();
     }
 }

@@ -1,3 +1,4 @@
+using Lean.Pool;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -6,6 +7,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
     
     [SerializeField] private AudioMixer audioMixer;
+
+    [SerializeField] private AudioPlayer audioPlayer;
 
     private void Awake()
     {
@@ -21,6 +24,12 @@ public class AudioManager : MonoBehaviour
         DataManager.OnSoundChanged += OnSoundChanged;
         
         OnSoundChanged();
+    }
+    
+    public void PlaySound(AudioClip audioClip)
+    {
+        AudioPlayer player = LeanPool.Spawn(audioPlayer);
+        player.Play(audioClip);
     }
 
     private void OnSoundChanged()

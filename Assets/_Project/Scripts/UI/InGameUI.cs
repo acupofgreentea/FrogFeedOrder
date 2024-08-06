@@ -53,6 +53,8 @@ public class InGameUI : MonoBehaviour
     {
         DataManager.Haptic = !DataManager.Haptic;
         hapticOffIcon.SetActive(!DataManager.Haptic);
+        
+        HapticManager.LightHaptic();
     }
     private void UpdateRemainingMoves(int remainingMoves)
     {

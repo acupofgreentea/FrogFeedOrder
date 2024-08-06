@@ -54,7 +54,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         IsSelectable = false;
     }
 
-    private void OnFailed()
+    private void HandleOnFail()
     {
         MoveToPreviousCell(false);
     }
@@ -105,6 +105,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 
         float elapsedTime = 0f;
 
+        HapticManager.LightHaptic();
         StartCoroutine(Sequence());
 
         IEnumerator Sequence()
@@ -167,6 +168,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
             return;
         }
 
+        HapticManager.LightHaptic();
         lineRenderer.positionCount = index + 1;
         var startPosition = lineRenderer.GetPosition(index - 1);
         var targetPosition = cell.transform.position;
@@ -205,16 +207,39 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         if (!IsSameColor(interactable.GridColor))
         {
             Debug.LogError("not same color");
-            OnFailed();
+            HandleOnFail();
         }
         else
         {
             if (!successfulInteraction) //we hit frog or smthng else in the future even though its same color
             {
-                OnFailed();
+                HandleOnFail();
                 return;
             }
-            MoveToNextCell(currentGridCell.GetTopGridCellInDirection(Direction), ++index);
+            var nextCell = currentGridCell.GetTopGridCellInDirection(Direction);
+            if(CanMoveToNextcell(nextCell))
+                MoveToNextCell(nextCell, ++index);
+            else
+                HandleOnSuccess();
         }
+    }
+
+    private bool CanMoveToNextcell(GridCellBase nextCell)
+    {
+        if(currentGridCell == null || nextCell == null)
+            return false;
+
+        if (nextCell.State == GridState.Empty)
+            return false;
+
+        if (currentGridCell.State == GridState.Grape && nextCell.State == GridState.Grape)
+        {
+            bool sameColor = ((GrapeGridCell)currentGridCell).GridColor == ((GrapeGridCell)nextCell).GridColor;
+
+            if (!sameColor)
+                return false;
+        }
+
+        return true;
     }
 }

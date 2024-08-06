@@ -46,6 +46,7 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
     {
         successfulInteraction = true;
         grape.AnimateGrape();
+        AudioManager.Instance.PlaySound(GameManager.Instance.PopClip);
     }
     
     public void DeInteract(ICellInteractable cellInteractable)
