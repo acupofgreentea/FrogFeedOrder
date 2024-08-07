@@ -95,6 +95,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1152013725568784331}
     m_Modifications:
+    - target: {fileID: 3175623904437872777, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175623904437872777, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175623904437872777, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175623904437872777, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175623904437872777, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4756686857324805463, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
       propertyPath: _gridCell
       value: 
@@ -216,6 +236,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8215895046f09c741a3e4ea18ded965b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c17ca1f06dde6c45886381f2a7cc7d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 8215895046f09c741a3e4ea18ded965b, type: 3}
       propertyPath: m_Name
       value: Cell

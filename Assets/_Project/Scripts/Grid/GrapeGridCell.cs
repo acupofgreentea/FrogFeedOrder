@@ -44,7 +44,30 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
 
     public void Interact(ICellInteractable cellInteractable, out bool successfulInteraction)
     {
-        successfulInteraction = true;
+        Vector3 key = transform.position;
+        key.y = 0f;
+
+        var cells = GridManager.Instance.GetCells(key);
+        bool existsSameColor = false;
+
+        if (cells != null)
+        {
+            foreach (var gridCellBase in cells)
+            {
+                if (gridCellBase == this)
+                    continue;
+                if(gridCellBase.State != GridState.Grape)
+                    continue;
+
+                //if any under cells is the same color as frog that means we fail 
+                existsSameColor = ((GrapeGridCell)gridCellBase).GridColor == cellInteractable.ContentColor;
+
+                if (existsSameColor == true)
+                    break;
+            }
+        }
+        
+        successfulInteraction = !existsSameColor;
         grape.AnimateGrape();
         AudioManager.Instance.PlaySound(GameManager.Instance.PopClip);
     }
@@ -53,7 +76,6 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
     {
         Disappear();
     }
-
 
     public void Collect(ICollector collector, Vector3[] path, float duration)
     {

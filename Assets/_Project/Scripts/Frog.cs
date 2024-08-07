@@ -56,6 +56,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 
     private void HandleOnFail()
     {
+        Debug.LogError("handle on fail");
         MoveToPreviousCell(false);
     }
 
@@ -217,7 +218,7 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
                 return;
             }
             var nextCell = currentGridCell.GetTopGridCellInDirection(Direction);
-            if(CanMoveToNextcell(nextCell))
+            if(nextCell != null && CanMoveToNextcell(nextCell))
                 MoveToNextCell(nextCell, ++index);
             else
                 HandleOnSuccess();
@@ -232,13 +233,13 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         if (nextCell.State == GridState.Empty)
             return false;
 
-        if (currentGridCell.State == GridState.Grape && nextCell.State == GridState.Grape)
+        /*if (currentGridCell.State == GridState.Grape && nextCell.State == GridState.Grape)
         {
             bool sameColor = ((GrapeGridCell)currentGridCell).GridColor == ((GrapeGridCell)nextCell).GridColor;
 
             if (!sameColor)
                 return false;
-        }
+        }*/
 
         return true;
     }
