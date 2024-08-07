@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public static class Helpers
@@ -81,12 +80,14 @@ public static class Helpers
         moved = moved.Reverse().ToArray();
         return GetPath(moved);
     }
-    
+
+#if UNITY_EDITOR
+
     public static T FindObject<T>() where T : ScriptableObject
     {
         string typeName = typeof(T).Name;
 
-        string[] guids = AssetDatabase.FindAssets($"t:{typeName}");
+        string[] guids = UnityEditor.AssetDatabase.FindAssets($"t:{typeName}");
 
         if (guids.Length == 0)
         {
@@ -99,8 +100,8 @@ public static class Helpers
             Debug.LogWarning($"Multiple assets of type {typeName} found. Returning the first one.");
         }
 
-        string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-        T asset = AssetDatabase.LoadAssetAtPath<T>(path);
+        string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[0]);
+        T asset = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
 
         if (asset == null)
         {
@@ -109,4 +110,6 @@ public static class Helpers
 
         return asset;
     }
+#endif
+
 }

@@ -105,7 +105,6 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 
         float elapsedTime = 0f;
 
-        HapticManager.LightHaptic();
         StartCoroutine(Sequence());
 
         IEnumerator Sequence()
@@ -168,7 +167,6 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
             return;
         }
 
-        HapticManager.LightHaptic();
         lineRenderer.positionCount = index + 1;
         var startPosition = lineRenderer.GetPosition(index - 1);
         var targetPosition = cell.transform.position;
@@ -194,7 +192,9 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
 
 
     private void HandleOnReachedNextGridCell(GridCellBase cell, int index)
-    {
+    {        
+        HapticManager.MediumHaptic();
+
         currentGridCell = cell;
         visitedCells.Add(cell);
         if (cell is not IInteractableCell interactable) // hit white one so win

@@ -38,7 +38,7 @@ public class GridCreator : MonoBehaviour
                 var gridCellData = values[x, z];
                 for (int y = 0; y < gridCellData.height; y++)
                 {
-                    float pad = z == 0  ? 1 : (1 + padding * y);
+                    float pad = z == 0  ? 1 : (1 + -padding * y);
                     Vector3 spawnPosition = new Vector3(x, y * yOffset, (levelDataSO.Depth - 1 - z)) + originPosition;
                     Vector3 key = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
                     spawnPosition.z *= pad;

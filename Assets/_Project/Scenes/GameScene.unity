@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yOffset: 0.08
-  padding: 0.025
+  padding: 0.035
   Cells:
     _serializedList:
     - Key: {x: -1.5, y: 0, z: 1.5}
@@ -430,7 +430,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
