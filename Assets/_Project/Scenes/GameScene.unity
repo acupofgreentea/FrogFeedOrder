@@ -159,6 +159,8 @@ MonoBehaviour:
     - Key: {x: -1.5, y: 0, z: 1.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: -1.5, y: 0, z: 0.5}
       Value:
       - {fileID: 0}
@@ -170,8 +172,10 @@ MonoBehaviour:
     - Key: {x: -1.5, y: 0, z: -1.5}
       Value:
       - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: -0.5, y: 0, z: 1.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
     - Key: {x: -0.5, y: 0, z: 0.5}
@@ -188,6 +192,8 @@ MonoBehaviour:
       Value:
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: 1.5}
       Value:
       - {fileID: 0}
@@ -196,14 +202,13 @@ MonoBehaviour:
       Value:
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: -0.5}
       Value:
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 0}
     - Key: {x: 0.5, y: 0, z: -1.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: 1.5}
@@ -212,13 +217,12 @@ MonoBehaviour:
     - Key: {x: 1.5, y: 0, z: 0.5}
       Value:
       - {fileID: 0}
-      - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: -0.5}
       Value:
       - {fileID: 0}
-      - {fileID: 0}
     - Key: {x: 1.5, y: 0, z: -1.5}
       Value:
+      - {fileID: 0}
       - {fileID: 0}
 --- !u!4 &62708390
 Transform:
@@ -334,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelHolder: {fileID: 11400000, guid: d1e1461018981e54395ccf73929995a4, type: 2}
   testLevel: 0
-  levelToTest: {fileID: 11400000, guid: 08789a5e2354a7b46bb3f7b74d4d69ed, type: 2}
+  levelToTest: {fileID: 11400000, guid: 5c72fec4ae2e60d49aab6eb9552ebdb7, type: 2}
 --- !u!4 &465742009
 Transform:
   m_ObjectHideFlags: 0

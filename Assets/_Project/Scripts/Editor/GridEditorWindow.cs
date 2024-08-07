@@ -30,6 +30,7 @@ public class GridEditorWindow : EditorWindow
         {
             width = gridData.Width;
             depth = gridData.Depth;
+            totalMovesCount = gridData.MoveCount;
             gridValues = gridData.GetGridValues();
         }
         else

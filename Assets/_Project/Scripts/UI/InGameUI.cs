@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,15 +19,15 @@ public class InGameUI : MonoBehaviour
     private void Awake()
     {
         PlayerController.OnRemainingMovesUpdated += UpdateRemainingMoves;
+        LevelManager.OnLevelLoaded += HandleOnLevelLoaded;
         
         settingsButton.onClick.AddListener(HandleOnSettingsButtonClick);
         hapticButton.onClick.AddListener(HandleOnHapticButtonClick);
         soundButton.onClick.AddListener(HandleOnSoundButtonClick);
     }
+
     private void Start()
     {
-        levelText.text = $"Level: {DataManager.CurrentLevel + 1}";
-        
         hapticOffIcon.SetActive(!DataManager.Haptic);
         soundOffIcon.SetActive(!DataManager.Sound);
     }
@@ -34,6 +35,13 @@ public class InGameUI : MonoBehaviour
     private void OnDisable()
     {
         PlayerController.OnRemainingMovesUpdated -= UpdateRemainingMoves;
+        LevelManager.OnLevelLoaded -= HandleOnLevelLoaded;
+    }
+
+    private void HandleOnLevelLoaded(LevelDataSO levelDataSo)
+    {
+        char level = levelDataSo.name.Last();
+        levelText.text = $"Level: {level}";
     }
     
     private void HandleOnSettingsButtonClick()
