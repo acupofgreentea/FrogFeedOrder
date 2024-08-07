@@ -67,11 +67,24 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
             }
         }
         
-        successfulInteraction = !existsSameColor;
-        grape.AnimateGrape();
+        successfulInteraction = !existsSameColor && cellInteractable.ContentColor == GridColor;
+
+        if (successfulInteraction == false)
+        {
+            AnimeFalseInteraction();
+        }
+        else
+        {
+            grape.AnimateGrape();
+        }
         AudioManager.Instance.PlaySound(GameManager.Instance.PopClip);
     }
-    
+
+    private void AnimeFalseInteraction()
+    {
+        grape.FalseAnimateGrape();
+    }
+
     public void DeInteract(ICellInteractable cellInteractable)
     {
         Disappear();
