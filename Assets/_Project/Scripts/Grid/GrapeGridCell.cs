@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
+public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable, IInitializableGridCell
 {
     [field: SerializeField] public ContentColor GridColor { get; set; }
 
@@ -20,10 +20,11 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable
         base.Start();
         _textureChanger.ChangeTexture(GameManager.Instance.SquareTextureHolder.GetTextureByColor(GridColor));
     }
-
-    public override void Initialize(params object[] args)
+    
+    
+    public void Initialize(GridCellData cellData, int index)
     {
-        GridColor = (ContentColor) args[0];
+        GridColor = cellData.colors[index];
         State = GridState.Grape;
     }
 

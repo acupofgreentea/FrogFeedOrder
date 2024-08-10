@@ -13,7 +13,7 @@ public abstract class GridCellBase : MonoBehaviour
     public event UnityAction<GridCellBase> OnGridCellDisappear;
 
     protected const float appearDuration = 0.35f;
-    protected const float disappearDuration = 0.35f;
+    private const float disappearDuration = 0.35f;
 
     protected virtual void Start()
     {
@@ -27,7 +27,6 @@ public abstract class GridCellBase : MonoBehaviour
             Appear(true);
         }
     }
-    public abstract void Initialize(params object[] args);
 
     private void OnNeighborGridCellDisappear(GridCellBase cellBase)
     {

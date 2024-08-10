@@ -65,14 +65,13 @@ public class GridCreator : MonoBehaviour
     private void InitializeGridCell(GridCellBase cell, GridCellData cellData, int index)
     {
         //0-color 1-direction
-        if (cellData.colors.Length > 0 && cellData.directions.Length > 0) //if has color and direction -> froggridcell
-            cell.Initialize(cellData.colors[index], cellData.directions[index]);
-        else if (cellData.directions.Length == 0) //if has no direction -> grapegridcell
-            cell.Initialize(cellData.colors[index]);
-        else if (cellData.states.Any(x => x == GridState.DirectionChanger))
-            cell.Initialize(cellData.colors[index], cellData.directions[index]);
-        else //empty cell
-            cell.Initialize();
+
+        if (cell is not IInitializableGridCell initializer)
+        {
+            return;
+        }
+        
+        initializer.Initialize(cellData, index);
     }
 
 

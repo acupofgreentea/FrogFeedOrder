@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DirectionChangerGridCell : GridCellBase, IInteractableCell
+public class DirectionChangerGridCell : GridCellBase, IInteractableCell, IInitializableGridCell
 {
     [SerializeField] private Direction newDirection;
 
@@ -8,13 +8,12 @@ public class DirectionChangerGridCell : GridCellBase, IInteractableCell
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public override void Initialize(params object[] args)
+    public void Initialize( GridCellData cellData, int index)
     {
-        GridColor = (ContentColor)args[0];
+        GridColor = cellData.colors[index];
         State = GridState.DirectionChanger;
-        newDirection = (Direction)args[1];
+        newDirection = cellData.directions[index];
     }
-
     protected override void Start()
     {
         base.Start();
@@ -50,4 +49,5 @@ public class DirectionChangerGridCell : GridCellBase, IInteractableCell
         successfulInteraction = true;
         cellInteractable.Direction = newDirection;
     }
+
 }
