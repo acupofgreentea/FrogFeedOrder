@@ -1,3 +1,4 @@
+using System;
 using Lean.Pool;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -25,15 +26,23 @@ public class AudioManager : MonoBehaviour
         
         OnSoundChanged();
     }
-    
+
+    private void OnDisable()
+    {
+        DataManager.OnSoundChanged -= OnSoundChanged;
+    }
+
     public void PlaySound(AudioClip audioClip)
     {
+        if(!DataManager.Sound)
+            return;
+        
         AudioPlayer player = LeanPool.Spawn(audioPlayer);
         player.Play(audioClip);
     }
 
     private void OnSoundChanged()
     {
-        audioMixer.SetFloat("Volume", DataManager.Sound ? 0f : -80f);
+        audioMixer.SetFloat(Constants.VOLUME_KEY, DataManager.Sound ? 0f : -80f);
     }
 }
