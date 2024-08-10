@@ -41,17 +41,16 @@ public class PlayerController : MonoBehaviour
             {
                 if (!selectable.IsSelectable)
                     return;
-                
-                remaningMoves--;
-                OnSelectableSelected?.Invoke(selectable);
-                OnRemainingMovesUpdated?.Invoke(remaningMoves);
 
                 selectable.OnSelected(out ICollector collector);
 
-                if (collector != null)
+                if (collector != null) //if null means its grape
                 {
                     collector.OnSuccess += HandleOnSuccess;
                     collector.OnFail += HandleOnFail;
+                    remaningMoves--;
+                    OnSelectableSelected?.Invoke(selectable);
+                    OnRemainingMovesUpdated?.Invoke(remaningMoves);
                 }
             }
         }
