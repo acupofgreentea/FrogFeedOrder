@@ -1,4 +1,3 @@
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,14 +6,17 @@ public class Grape : MonoBehaviour, ISelectable
 {
     [SerializeField] private GrapeGridCell _gridCell;
     [SerializeField] private TextureChanger _textureChanger;
+
     public bool IsSelectable { get; private set; } = true;
 
     private const float animateDuration = 0.1f;
 
-    private void Start()
+#if UNITY_EDITOR
+    public void Initialize()
     {
-        _textureChanger.ChangeTexture(GameManager.Instance.GrapeTextureHolder.GetTextureByColor(_gridCell.GridColor));
+        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("GrapeMaterialHolder").GetMaterialByColor(_gridCell.GridColor));
     }
+#endif
 
     public void AnimateGrape(UnityAction onComplete = null)
     {
@@ -41,11 +43,11 @@ public class Grape : MonoBehaviour, ISelectable
 
     public void FalseAnimateGrape()
     {
-        _textureChanger.ChangeTexture(GameManager.Instance.GrapeTextureHolder.GetTextureByColor(ContentColor.Red));
+        //_textureChanger.ChangeTexture(GameManager.Instance.GrapeTextureHolder.GetTextureByColor(ContentColor.Red));
         AnimateGrape(onComplete: () =>
         {
-            _textureChanger.ChangeTexture(
-                GameManager.Instance.GrapeTextureHolder.GetTextureByColor(_gridCell.GridColor));
+           // _textureChanger.ChangeTexture(
+                //GameManager.Instance.GrapeTextureHolder.GetTextureByColor(_gridCell.GridColor));
         });
     }
 }

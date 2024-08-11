@@ -7,7 +7,8 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable, IIni
 
     [SerializeField] private Grape grape;
     
-    private TextureChanger _textureChanger;
+    
+    [SerializeField] private TextureChanger _textureChanger;
 
     private void Awake()
     {
@@ -18,15 +19,19 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable, IIni
     {
         grape.gameObject.SetActive(false);
         base.Start();
-        _textureChanger.ChangeTexture(GameManager.Instance.SquareTextureHolder.GetTextureByColor(GridColor));
     }
-    
+
+
+#if UNITY_EDITOR
     
     public void Initialize(GridCellData cellData, int index)
     {
         GridColor = cellData.colors[index];
         State = GridState.Grape;
+        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder").GetMaterialByColor(GridColor));
+        grape.Initialize();
     }
+#endif
 
     protected override void Appear(bool instant)
     {

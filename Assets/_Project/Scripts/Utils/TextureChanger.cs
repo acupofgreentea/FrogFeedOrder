@@ -3,23 +3,19 @@ using UnityEngine;
 public class TextureChanger : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
-    private MaterialPropertyBlock _propertyBlock;
-    private static readonly int MainTex = Shader.PropertyToID(Constants.MAIN_TEX);
 
-    private void Awake()
+    public void ChangeMaterial(Material newMat, int materialIndex = Constants.GRID_CELL_MATERIAL_INDEX)
     {
-        _propertyBlock = new MaterialPropertyBlock();
-    }
-
-    public void ChangeTexture(Texture texture, int materialIndex = Constants.GRID_CELL_MATERIAL_INDEX)
-    {
-        if (_renderer == null || texture == null)
+        if (materialIndex == 0)
+        {
+            _renderer.sharedMaterial = newMat;
             return;
+        }
 
-        _renderer.GetPropertyBlock(_propertyBlock, materialIndex);
-
-        _propertyBlock.SetTexture(MainTex, texture);
-
-        _renderer.SetPropertyBlock(_propertyBlock, materialIndex);
+        var mats = _renderer.sharedMaterials;
+        
+        mats[materialIndex] = newMat;
+        
+        _renderer.sharedMaterials = mats;
     }
 }

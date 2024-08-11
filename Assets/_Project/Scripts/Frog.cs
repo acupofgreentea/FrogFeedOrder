@@ -25,17 +25,24 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
     public static event UnityAction<Frog> OnFrogSpawned;
 
     private Direction actualDirection;
-
     public void Initialize(ContentColor color, Direction direction)
     {
         ContentColor = color;
         Direction = direction;
         actualDirection = direction;
         transform.rotation = Helpers.GetRotationByDirection(direction);
-        _textureChanger.ChangeTexture(GameManager.Instance.FrogTextureHolder.GetTextureByColor(color));
+        
 
         OnFrogSpawned?.Invoke(this);
     }
+
+#if UNITY_EDITOR
+    
+    public void Initialize(ContentColor color)
+    {
+        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("FrogMaterialHolder").GetMaterialByColor(color));
+    }
+#endif
 
     private bool IsSameColor(ContentColor targetColor) => targetColor == ContentColor;
 

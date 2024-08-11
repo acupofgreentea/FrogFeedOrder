@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce8167602c44c4193f61b06157161f9, type: 3}
+  m_Name: SquareMaterialHolder
+  m_EditorClassIdentifier: 
+  _materials:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 2100000, guid: 35dd7f76812d40e42a478b64c43467c4, type: 2}
+    - Key: 1
+      Value: {fileID: 2100000, guid: 9cc04a44637d80a45814d0ad5777cab7, type: 2}
+    - Key: 2
+      Value: {fileID: 2100000, guid: 15e936a1e8d05e046b36a2582bc69913, type: 2}
+    - Key: 3
+      Value: {fileID: 2100000, guid: 2e3ee52b2183bc6429fdfb30f6bb0396, type: 2}
+    - Key: 4
+      Value: {fileID: 2100000, guid: da2b1d6c86709c648853bcf09a621998, type: 2}

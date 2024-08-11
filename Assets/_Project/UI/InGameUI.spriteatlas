@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InGameUI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 46ac4b6c3b8b00e45aa376c0186469db, type: 3}
+    - {fileID: 2800000, guid: b2799ce725abd8f4d8d4734e917a50f8, type: 3}
+    - {fileID: 2800000, guid: 501cc52fe09e6184c81f527ab5b09f5b, type: 3}
+    - {fileID: 2800000, guid: 501cc52fe09e6184c81f527ab5b09f5b, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - b2799ce725abd8f4d8d4734e917a50f8: 21300000
+    - 46ac4b6c3b8b00e45aa376c0186469db: 21300000
+    - 501cc52fe09e6184c81f527ab5b09f5b: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b2799ce725abd8f4d8d4734e917a50f8, type: 3}
+  - {fileID: 21300000, guid: 46ac4b6c3b8b00e45aa376c0186469db, type: 3}
+  - {fileID: 21300000, guid: 501cc52fe09e6184c81f527ab5b09f5b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Settings
+  - Haptic
+  - Sound
+  m_RenderDataMap: {}
+  m_Tag: InGameUI
+  m_IsVariant: 0

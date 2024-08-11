@@ -176,7 +176,6 @@ GameObject:
   - component: {fileID: 8012306254639257920}
   - component: {fileID: 2820665247926958197}
   - component: {fileID: 2833788770841788262}
-  - component: {fileID: 4031890063014017945}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -219,7 +218,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 5386540550721989581}
   lineRendererStartPosition: {fileID: 7253548070994807712}
   currentGridCell: {fileID: 0}
-  _textureChanger: {fileID: 4031890063014017945}
+  _textureChanger: {fileID: 0}
 --- !u!65 &2833788770841788262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -241,19 +240,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.48226655, z: 1}
   m_Center: {x: 0, y: 0.25886673, z: 0}
---- !u!114 &4031890063014017945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7380188554986297149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b0bd7dcd7848268b7cfb4683377fa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 7049512759928060349}
 --- !u!1001 &1865344202802814053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -638,10 +624,5 @@ PrefabInstance:
 --- !u!4 &2191478226933005198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: efc0dca3292e6f64aa69bb543b46400f, type: 3}
-  m_PrefabInstance: {fileID: 1865344202802814053}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &7049512759928060349 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8662654272577283544, guid: efc0dca3292e6f64aa69bb543b46400f, type: 3}
   m_PrefabInstance: {fileID: 1865344202802814053}
   m_PrefabAsset: {fileID: 0}

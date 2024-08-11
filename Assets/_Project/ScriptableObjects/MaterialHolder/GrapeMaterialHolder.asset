@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce8167602c44c4193f61b06157161f9, type: 3}
+  m_Name: GrapeMaterialHolder
+  m_EditorClassIdentifier: 
+  _materials:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 2100000, guid: cb5ab86624083cb4e8814937f7ffd8fb, type: 2}
+    - Key: 1
+      Value: {fileID: 2100000, guid: de5e1c8f22fc2854b8a98baec3e96628, type: 2}
+    - Key: 2
+      Value: {fileID: 2100000, guid: 8c5898ce05d85b444ba81a0667255b6b, type: 2}
+    - Key: 3
+      Value: {fileID: 2100000, guid: 3b8f06b6025428b46b99e7a09ee602bd, type: 2}
+    - Key: 4
+      Value: {fileID: 2100000, guid: 0012ad5edac8b34408495cdbb5b35064, type: 2}

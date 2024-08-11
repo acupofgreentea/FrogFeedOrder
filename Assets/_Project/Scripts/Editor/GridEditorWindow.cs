@@ -8,6 +8,7 @@ public class GridEditorWindow : EditorWindow
     private int width = 4;
     private int depth = 4;
     private int totalMovesCount = 5;
+    private int _frogCount = 0;
     private GridCellData[,] gridValues;
     private Vector2 scrollPos;
     private LevelDataSO gridData;
@@ -54,7 +55,15 @@ public class GridEditorWindow : EditorWindow
         int newWidth = EditorGUILayout.IntField("Width", width, GUILayout.Width(200));
         int newHeight = EditorGUILayout.IntField("Depth", depth, GUILayout.Width(200));
         totalMovesCount = EditorGUILayout.IntField("Total Moves", totalMovesCount, GUILayout.Width(200));
+        GUIStyle style = new GUIStyle(GUI.skin.textField)
+        {
+            alignment = TextAnchor.MiddleLeft,
+            fixedWidth = 48,
+            normal = {textColor = Color.gray}
+        };
+        EditorGUILayout.LabelField("Frog Count", $"{_frogCount}", style);
         editLevel = EditorGUILayout.Toggle("Edit Level", editLevel);
+        
         if (editLevel)
         {
             LevelDataSO previousGridData = gridData;
@@ -182,6 +191,8 @@ public class GridEditorWindow : EditorWindow
         }
 
         EditorGUILayout.EndVertical();
+        
+        _frogCount = gridValues.Cast<GridCellData>().Count(cell => cell.states.Contains(GridState.Frog));
     }
 
     private void CreateLevel()

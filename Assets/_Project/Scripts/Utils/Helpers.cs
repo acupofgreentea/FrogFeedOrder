@@ -83,6 +83,32 @@ public static class Helpers
 
 #if UNITY_EDITOR
 
+    public static T FindObjectByName<T>(string assetName) where T : ScriptableObject
+    {
+        string[] guids = UnityEditor.AssetDatabase.FindAssets(assetName);
+
+        if (guids.Length == 0)
+        {
+            Debug.LogWarning($"No asset with name {assetName} found.");
+            return null;
+        }
+
+        if (guids.Length > 1)
+        {
+            Debug.LogWarning($"Multiple assets with name {assetName} found. Returning the first one.");
+        }
+
+        string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[0]);
+        T asset = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
+
+        if (asset == null)
+        {
+            Debug.LogError($"Failed to load asset at path: {path}");
+        }
+
+        return asset;
+    }
+    
     public static T FindObject<T>() where T : ScriptableObject
     {
         string typeName = typeof(T).Name;

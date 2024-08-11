@@ -87,6 +87,8 @@ MonoBehaviour:
   <State>k__BackingField: 2
   <GridColor>k__BackingField: 0
   grape: {fileID: 7113315236685024344}
+  _materialHolder: {fileID: 11400000, guid: d169f9cab05e3bd4aa6b9df407044990, type: 2}
+  _textureChanger: {fileID: 4840436810651013}
 --- !u!1001 &2356710796762886415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +121,10 @@ PrefabInstance:
       propertyPath: _gridCell
       value: 
       objectReference: {fileID: 752734646708714974}
+    - target: {fileID: 4756686857324805463, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
+      propertyPath: _materialHolderSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 38a6680de86df7d4dbb022eda52b9e3e, type: 2}
     - target: {fileID: 6393084279452758531, guid: 8ecf3bd3ecd9886489ea9ced84465ebe, type: 3}
       propertyPath: m_Name
       value: Grape

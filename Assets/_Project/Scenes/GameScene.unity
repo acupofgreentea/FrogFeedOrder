@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelHolder: {fileID: 11400000, guid: d1e1461018981e54395ccf73929995a4, type: 2}
-  testLevel: 0
+  testLevel: 1
   levelToTest: {fileID: 11400000, guid: 5c72fec4ae2e60d49aab6eb9552ebdb7, type: 2}
 --- !u!4 &465742009
 Transform:

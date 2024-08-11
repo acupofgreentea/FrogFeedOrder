@@ -6,7 +6,7 @@ public class FrogGridCell : GridCellBase, IInteractableCell, IInitializableGridC
     [field: SerializeField] public ContentColor GridColor { get; set; }
     [field: SerializeField] public Direction Direction { get; private set; }
     [SerializeField] private Frog frog;
-    private TextureChanger _textureChanger;
+    [SerializeField] private TextureChanger _textureChanger;
 
     private const float animateDuration = 0.15f;
     private void Awake()
@@ -19,15 +19,19 @@ public class FrogGridCell : GridCellBase, IInteractableCell, IInitializableGridC
     {
         frog.gameObject.SetActive(false);
         base.Start();
-        _textureChanger.ChangeTexture(GameManager.Instance.SquareTextureHolder.GetTextureByColor(GridColor));
         frog.Initialize(GridColor, Direction);
     }
+#if UNITY_EDITOR
+    
     public void Initialize(GridCellData cellData, int index)
     {
         GridColor = cellData.colors[index];
         Direction = cellData.directions[index];
         State = GridState.Frog;
+        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder").GetMaterialByColor(GridColor));
+        frog.Initialize(GridColor);
     }
+#endif
 
     protected override void Appear(bool instant)
     {
