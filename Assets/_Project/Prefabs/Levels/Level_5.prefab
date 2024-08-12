@@ -150,6 +150,9 @@ MonoBehaviour:
       Value:
       - {fileID: 3893707978282844177}
       - {fileID: 877730783350236193}
+  <GrapeMaterialHolder>k__BackingField: {fileID: 11400000, guid: 38a6680de86df7d4dbb022eda52b9e3e, type: 2}
+  <SquareMaterialHolder>k__BackingField: {fileID: 11400000, guid: d169f9cab05e3bd4aa6b9df407044990, type: 2}
+  <FrogMaterialHolder>k__BackingField: {fileID: 11400000, guid: 0d4d4e90f22f2e7409ca56310f214059, type: 2}
 --- !u!1001 &243889892896495598
 PrefabInstance:
   m_ObjectHideFlags: 0

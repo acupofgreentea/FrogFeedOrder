@@ -41,11 +41,11 @@ public class Grape : MonoBehaviour, ISelectable
 
     public void FalseAnimateGrape()
     {
-        //_textureChanger.ChangeTexture(GameManager.Instance.GrapeTextureHolder.GetTextureByColor(ContentColor.Red));
+        GridManager gridManager = GetComponentInParent<GridManager>();
+        _textureChanger.ChangeMaterial(gridManager.GrapeMaterialHolder.GetMaterialByColor(ContentColor.Red));
         AnimateGrape(onComplete: () =>
         {
-           // _textureChanger.ChangeTexture(
-                //GameManager.Instance.GrapeTextureHolder.GetTextureByColor(_gridCell.GridColor));
+            _textureChanger.ChangeMaterial(gridManager.GrapeMaterialHolder.GetMaterialByColor(_gridCell.GridColor));
         });
     }
 }
