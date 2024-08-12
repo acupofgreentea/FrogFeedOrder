@@ -10,17 +10,14 @@ public class DirectionChangerGridCell : GridCellBase, IInteractableCell, IInitia
 
     [SerializeField] private TextureChanger _textureChanger;
 
-#if UNITY_EDITOR
-    
     public void Initialize( GridCellData cellData, int index)
     {
         GridColor = cellData.colors[index];
         State = GridState.DirectionChanger;
         newDirection = cellData.directions[index];
         
-        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder").GetMaterialByColor(GridColor));
+        _textureChanger.ChangeMaterial(GetComponentInParent<GridManager>().SquareMaterialHolder.GetMaterialByColor(GridColor));
     }
-#endif
     protected override void Start()
     {
         base.Start();

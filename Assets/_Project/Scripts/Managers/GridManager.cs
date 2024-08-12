@@ -7,6 +7,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private SerializedDictionary<Vector3, List<GridCellBase>> Cells = new();
     
     public static GridManager Instance { get; private set; }
+    
+    [field: SerializeField] public MaterialHolderSO GrapeMaterialHolder { get;  set; }
+    [field: SerializeField] public MaterialHolderSO SquareMaterialHolder { get;  set; }
+    [field: SerializeField] public MaterialHolderSO FrogMaterialHolder { get;  set; }
 
     private void Awake()
     {

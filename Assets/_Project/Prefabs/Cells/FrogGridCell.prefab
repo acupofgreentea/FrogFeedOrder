@@ -76,7 +76,6 @@ MonoBehaviour:
   <Direction>k__BackingField: 0
   frog: {fileID: 3965945614618081423}
   _textureChanger: {fileID: 4840436810651013}
-  _materialHolder: {fileID: 11400000, guid: d169f9cab05e3bd4aa6b9df407044990, type: 2}
 --- !u!114 &4840436810651013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,24 +98,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1152013725568784331}
     m_Modifications:
     - target: {fileID: 2820665247926958197, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-      propertyPath: _textureChanger
-      value: 
-      objectReference: {fileID: 1287208462823303656}
-    - target: {fileID: 2820665247926958197, guid: c70639fff793b734189d91cedcde01ae, type: 3}
       propertyPath: currentGridCell
       value: 
       objectReference: {fileID: 873105365528780523}
-    - target: {fileID: 2820665247926958197, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-      propertyPath: _materialHolderSo
-      value: 
-      objectReference: {fileID: 11400000, guid: 0d4d4e90f22f2e7409ca56310f214059, type: 2}
     - target: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
       propertyPath: m_Name
       value: Frog
-      objectReference: {fileID: 0}
-    - target: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8012306254639257920, guid: c70639fff793b734189d91cedcde01ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -161,45 +148,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1287208462823303656}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c70639fff793b734189d91cedcde01ae, type: 3}
 --- !u!114 &3965945614618081423 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2820665247926958197, guid: c70639fff793b734189d91cedcde01ae, type: 3}
   m_PrefabInstance: {fileID: 1165546780304965882}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8522896253954103239}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 060b18bfecab4c7382cc87d9659b0d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!137 &8212380021234727239 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7049512759928060349, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-  m_PrefabInstance: {fileID: 1165546780304965882}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8522896253954103239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7380188554986297149, guid: c70639fff793b734189d91cedcde01ae, type: 3}
-  m_PrefabInstance: {fileID: 1165546780304965882}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1287208462823303656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8522896253954103239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b0bd7dcd7848268b7cfb4683377fa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 8212380021234727239}
 --- !u!4 &9159675719696275898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8012306254639257920, guid: c70639fff793b734189d91cedcde01ae, type: 3}

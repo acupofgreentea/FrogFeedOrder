@@ -22,16 +22,13 @@ public class GrapeGridCell : GridCellBase, IInteractableCell, ICollectable, IIni
     }
 
 
-#if UNITY_EDITOR
-    
     public void Initialize(GridCellData cellData, int index)
     {
         GridColor = cellData.colors[index];
         State = GridState.Grape;
-        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder").GetMaterialByColor(GridColor));
+        _textureChanger.ChangeMaterial(GetComponentInParent<GridManager>().SquareMaterialHolder.GetMaterialByColor(GridColor));
         grape.Initialize();
     }
-#endif
 
     protected override void Appear(bool instant)
     {

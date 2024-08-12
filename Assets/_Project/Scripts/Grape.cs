@@ -11,12 +11,10 @@ public class Grape : MonoBehaviour, ISelectable
 
     private const float animateDuration = 0.1f;
 
-#if UNITY_EDITOR
     public void Initialize()
     {
-        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("GrapeMaterialHolder").GetMaterialByColor(_gridCell.GridColor));
+        _textureChanger.ChangeMaterial(GetComponentInParent<GridManager>().GrapeMaterialHolder.GetMaterialByColor(_gridCell.GridColor));
     }
-#endif
 
     public void AnimateGrape(UnityAction onComplete = null)
     {

@@ -6,16 +6,36 @@
   <component name="ChangeListManager">
     <list default="true" id="38decf20-63fc-4543-912f-b39c2c4d5949" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FrogFeedOrder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FrogFeedOrder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Levels/Level_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Levels/Level_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialPurple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialPurple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialYellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/FrogMats/FrogMaterialYellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeBlueMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeBlueMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeGreenMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeGreenMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapePurpleMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapePurpleMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeRedMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeRedMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeYellowMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/GrapeMats/GrapeYellowMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialPurple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialPurple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialYellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/SquareMaterialYellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_SquareMaterialEmptyGridCell.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_SquareMaterialEmptyGridCell.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_White.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_WhiteEmptyGridCellMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Materials/SquareMats/_WhiteEmptyGridCellMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/FrogGridCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Cells/FrogGridCell.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Frog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Frog.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Levels/Level_6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Levels/Level_6.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/FrogTextureHolder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/FrogTextureHolder.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/GrapeTextureHolder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/GrapeTextureHolder.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/SquareTextureHolder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/TextureHolder/SquareTextureHolder.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/ScriptableObjects/Levels/Level_6.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Editor/GridEditorWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Frog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/DirectionChangerGridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/DirectionChangerGridCell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/FrogGridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/FrogGridCell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GrapeGridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GrapeGridCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Grid/GridCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/ContentColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Utils/ContentColor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/GridManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +137,10 @@
       <workItem from="1722933104585" duration="21199000" />
       <workItem from="1722966748331" duration="9791000" />
       <workItem from="1722977700285" duration="297000" />
+      <workItem from="1723405118823" duration="992000" />
+      <workItem from="1723407273337" duration="282000" />
+      <workItem from="1723448253241" duration="643000" />
+      <workItem from="1723452386594" duration="1962000" />
     </task>
     <servers />
   </component>

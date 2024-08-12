@@ -21,17 +21,15 @@ public class FrogGridCell : GridCellBase, IInteractableCell, IInitializableGridC
         base.Start();
         frog.Initialize(GridColor, Direction);
     }
-#if UNITY_EDITOR
     
     public void Initialize(GridCellData cellData, int index)
     {
         GridColor = cellData.colors[index];
         Direction = cellData.directions[index];
         State = GridState.Frog;
-        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder").GetMaterialByColor(GridColor));
+        _textureChanger.ChangeMaterial(GetComponentInParent<GridManager>().SquareMaterialHolder.GetMaterialByColor(GridColor));
         frog.Initialize(GridColor);
     }
-#endif
 
     protected override void Appear(bool instant)
     {

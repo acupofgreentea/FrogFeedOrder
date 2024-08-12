@@ -36,13 +36,11 @@ public class Frog : MonoBehaviour, ICellInteractable, ICollector, ISelectable
         OnFrogSpawned?.Invoke(this);
     }
 
-#if UNITY_EDITOR
     
     public void Initialize(ContentColor color)
     {
-        _textureChanger.ChangeMaterial(Helpers.FindObjectByName<MaterialHolderSO>("FrogMaterialHolder").GetMaterialByColor(color));
+        _textureChanger.ChangeMaterial(GetComponentInParent<GridManager>().FrogMaterialHolder.GetMaterialByColor(color));
     }
-#endif
 
     private bool IsSameColor(ContentColor targetColor) => targetColor == ContentColor;
 

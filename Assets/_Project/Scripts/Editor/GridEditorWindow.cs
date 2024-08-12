@@ -244,6 +244,12 @@ public class GridEditorWindow : EditorWindow
         
         GameObject level = new GameObject();
         level.AddComponent<GridManager>();
+        level.GetComponent<GridManager>().SquareMaterialHolder =
+            Helpers.FindObjectByName<MaterialHolderSO>("SquareMaterialHolder");
+        level.GetComponent<GridManager>().FrogMaterialHolder =
+            Helpers.FindObjectByName<MaterialHolderSO>("FrogMaterialHolder");
+        level.GetComponent<GridManager>().GrapeMaterialHolder =
+            Helpers.FindObjectByName<MaterialHolderSO>("GrapeMaterialHolder");
 
         if (editLevel)
         {
